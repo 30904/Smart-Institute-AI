@@ -1,0 +1,22 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+MODULE SHELL — FEES,,,,,Not Started,,,,
+Fees,Frontend,Fees ModuleShell + Masters cards,Frontend,"Fee Structure, Fee Heads, Payment Modes, Installments, Scholarships, Fine/Penalty, Tax, Refund Policies.",Not Started,Arnav,Critical,Phase 1,Client billing→receipt + auto email.
+MASTERS,,,,,Not Started,,,,
+Fee Head,DB,models/FeeHead.js,DB,"name, code, tax_applicable, is_active.",Not Started,Arnav,Critical,Phase 1,
+Fee Structure,DB,models/FeeStructure.js,DB,"program_id, academic_year_id, heads[], installment_plan_id?, total.",Not Started,Arnav,Critical,Phase 1,
+Payment Mode,DB,models/PaymentMode.js,DB,"cash, UPI, card, bank, online gateway stub.",Not Started,Arnav,High,Phase 1,
+Installment Plan,DB,models/InstallmentPlan.js,DB,schedule JSON: due dates / percentages.,Not Started,Arnav,High,Phase 1,
+Fine/Tax/Refund,DB,"FineRule, TaxConfig, RefundPolicy models",DB,Per functional spec masters.,Not Started,Arnav,High,Phase 1,
+Masters,Backend/UI,CRUD + fee master pages,All,pages/fees/masters/*.,Not Started,Arnav,Critical,Phase 1,
+TRANSACTIONS,,,,,Not Started,,,,
+Assignment,Backend/UI,Generate + assign fees to students,All,Map structure to enrolled students; admission fee assignment.,Not Started,Arnav,Critical,Phase 1,
+Collection,DB,models/FeePayment.js + StudentFeeLedger,DB,Payments online/offline; installment tracking; outstanding.,Not Started,Arnav,Critical,Phase 1,
+Collection,Backend/UI,Collect payment screens + APIs,All,Record payment; update ledger.,Not Started,Arnav,Critical,Phase 1,
+Receipt,Backend,Auto receipt generation on successful payment,Backend,Digital receipt number; PDF stub; store electronic record.,Not Started,Arnav,Critical,Phase 1,Client process note requirement.
+Tax Invoice,Backend,Tax Invoice generation on payment confirmation,Backend,Generate tax invoice; email invoice + receipt to registered email (mailer).,Not Started,Arnav,Critical,Phase 2,Client automated communication.
+Scholarship/Fine,Backend/UI,Scholarship adjustment + fine calculation,All,Adjust dues; apply fines per rules.,Not Started,Arnav,High,Phase 2,
+Refund,Backend/UI,Refund processing,All,Refund workflow + policy checks; audit.,Not Started,Arnav,High,Phase 2,
+Outstanding,Backend/UI,Outstanding fee management,All,"Lists, reminders stub, block hall ticket flag API for Exams consumer.",Not Started,Arnav,High,Phase 2,Precious Exams reads dues flag via API.
+Admission bridge,Backend,Admission fee payment confirmation API,Backend,Endpoint/event used by Admissions enrollment step.,Not Started,Arnav,Critical,Phase 1,Same owner — internal contract.
+REPORTS,,,,,Not Started,,,,
+Reports,All,"Collection, Outstanding, Daily Collection, Student Ledger, Scholarship, Refund, Revenue Dashboard",All,"Also Invoice Status, Receipt Generation, Ageing-style outstanding (client finance-lite).",Not Started,Arnav,High,Phase 2,Client: Fee collection reports + course-wise profitability later.

@@ -1,0 +1,189 @@
+Sheet,Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+01 Architecture-Foundation,Stack,Monorepo,Project scaffold (backend/ + frontend/),All,"Root scripts; backend Node+Express .js; frontend React+Vite .jsx; .env.example for MONGO_URI, JWT_SECRET, PORT, CLIENT_URL.",Not Started,Arnav,Critical,Phase 0,Precious clones after scaffold merged — do not scaffold in parallel.
+01 Architecture-Foundation,Stack,Frontend,React 18 + Vite (frontend/),Frontend,Responsive app; path aliases; ESLint. Mobile-friendly breakpoints for ERP tables.,Not Started,Arnav,Critical,Phase 0,
+01 Architecture-Foundation,Stack,Backend,Node.js + Express API (backend/),Backend,"REST folders: models/, routes/, controllers/, services/, middleware/, seeds/, utils/, config/.",Not Started,Arnav,Critical,Phase 0,
+01 Architecture-Foundation,Stack,Database,MongoDB + Mongoose connection,DB,config/db.js; GET /api/health.,Not Started,Arnav,Critical,Phase 0,
+01 Architecture-Foundation,Stack,Auth,JWT login + /api/auth/me,Backend,POST /api/auth/login; Bearer token; password_hash; /me returns user + permissions + institution context.,Not Started,Arnav,Critical,Phase 0,
+01 Architecture-Foundation,Stack,Charts,Recharts (or Chart.js) shared wrappers,Frontend,frontend/src/components/charts/ for dashboard + MIS reuse.,Not Started,Arnav,Medium,Phase 2,Precious imports wrappers — does not rewrite chart kit.
+01 Architecture-Foundation,Stack,Email,Email service stub (invoice/receipt later),Backend,utils/mailer.js stub; env SMTP placeholders. Wired in Fees Phase 2 for Tax Invoice + Receipt auto-email (client process note).,Not Started,Arnav,High,Phase 2,Aligns with client automated customer communication.
+01 Architecture-Foundation,Architecture,Route split,backend/routes/coreRoutes.js,Backend,"Arnav mounts Admissions, Students, Fees, Dashboard, Auth, Users, Shared Masters here.",Not Started,Arnav,Critical,Phase 0,Avoids both editing routes/index.js.
+01 Architecture-Foundation,Architecture,Route split,backend/routes/academicRoutes.js,Backend,"Precious mounts Faculty, Academics, LMS, Exams routes here.",Not Started,Precious,Critical,Phase 0,
+01 Architecture-Foundation,Architecture,Route split,frontend/src/routes/coreRoutes.jsx,Frontend,"Lazy routes: auth, dashboard, admissions, students, fees, users, shared masters screens.",Not Started,Arnav,Critical,Phase 0,
+01 Architecture-Foundation,Architecture,Route split,frontend/src/routes/academicRoutes.jsx,Frontend,"Lazy routes: faculty, academics, lms, exams.",Not Started,Precious,Critical,Phase 0,
+01 Architecture-Foundation,Architecture,App shell,WTI-style ERP Layout + Sidebar + TopBar,Frontend,"Match Celeris WTI: collapsible left nav with 7 modules (Admissions, Students, Faculty, Academics, LMS, Exams, Fees); top context bar (workspace, search, FY, location); blue module banner.",Not Started,Arnav,Critical,Phase 0,Precious does not edit Layout/Sidebar/TopBar.
+01 Architecture-Foundation,Architecture,Module chrome,ModuleShell — Dashboard | Masters | Transactions | Reports tabs,Frontend,Shared ModuleShell.jsx owned by Arnav; each module page composes it. Visual parity with /app/wti/masters card layout.,Not Started,Arnav,Critical,Phase 0,Precious imports ModuleShell only.
+01 Architecture-Foundation,Architecture,UI kit,"Shared components: MasterCardGrid, DataTable, PageHeader, StatusBadge, FormDrawer",Frontend,frontend/src/components/ui/ — Celeris-like cards for Masters landing; tables for lists; consistent primary blue accents.,Not Started,Arnav,Critical,Phase 0,Single owner; Precious imports.
+01 Architecture-Foundation,Architecture,API client,api/client.js + api/core/ + api/academic/,Frontend,"Axios + auth interceptor; split API folders by owner (core = Arnav, academic = Precious).",Not Started,Arnav,High,Phase 0,Precious creates only api/academic/* files.
+01 Architecture-Foundation,Architecture,Institution context,models/Institution.js + FY/Location context,DB,Seed institution; financial year + location in TopBar (parity with ERP context bar).,Not Started,Arnav,High,Phase 0,
+01 Architecture-Foundation,Architecture,Error handling,Global error middleware + response envelope,Backend,"{ success, data, message } shape; 4xx/5xx handlers.",Not Started,Arnav,Medium,Phase 0,
+01 Architecture-Foundation,Architecture,Audit log,models/AuditLog.js + helper,Backend,"Log admission approvals, fee overrides, result publish, permission changes, refunds.",Not Started,Arnav,High,Phase 0,Precious calls writeAudit helper — does not edit model.
+01 Architecture-Foundation,Architecture,Contracts doc,docs/contracts.md cross-module events,Docs,"Document: admission.enrolled, fee.paid, result.published, student.promoted, student.alumni.",Not Started,Both,Critical,Phase 0,Agree before feature coding.
+01 Architecture-Foundation,Architecture,Seed runner,backend/seeds/index.js,Backend,"Seed admin user, roles, permissions, institution, sample academic year.",Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,RBAC,DB,models/Role.js,DB,"Seed roles: Super Admin, Institution Admin, Admission Officer, Faculty, Exam Controller, Accountant, Student (portal later).",Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,RBAC,DB,models/Permission.js,DB,"module + action (view|create|edit|delete|approve). Modules: admissions, students, faculty, academics, lms, exams, fees, dashboard, users, settings.",Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,RBAC,DB,models/RolePermission.js,DB,M2M role↔permission; drives dynamic left nav.,Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,RBAC,DB,models/UserMenuOverride.js,DB,Per-user grant/deny overrides.,Not Started,Arnav,High,Phase 0,
+02 RBAC-Auth-Users,RBAC,DB,models/User.js,DB,"name, email, phone, password_hash, role_id, department_id?, is_active, linked_faculty_id?, linked_student_id?.",Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,RBAC,Backend,middleware/requirePermission.js,Backend,"requirePermission(module, action); resolves RolePermission + overrides.",Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,RBAC,Backend,GET /api/auth/me permissions payload,Backend,Returns permission set for Sidebar + route guards.,Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,RBAC,Frontend,PermissionContext + usePermission + ProtectedRoute,Frontend,No scattered role=== checks; menu built from permissions.,Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,User Mgmt,Backend,CRUD /api/users,Backend,Create/edit/soft-deactivate; never hard-delete users with history.,Not Started,Arnav,Critical,Phase 0,
+02 RBAC-Auth-Users,User Mgmt,Backend,PUT /api/users/:id/permission-overrides,Backend,Admin toggles overrides.,Not Started,Arnav,High,Phase 1,
+02 RBAC-Auth-Users,User Mgmt,Frontend,pages/users/UserList.jsx + UserForm.jsx,Frontend,Admin-only user management screens inside shell.,Not Started,Arnav,High,Phase 1,
+02 RBAC-Auth-Users,User Mgmt,Frontend,pages/auth/Login.jsx,Frontend,Email + password; post-login redirect to Dashboard or first permitted module.,Not Started,Arnav,Critical,Phase 0,UI clean/professional — match ERP login simplicity.
+02 RBAC-Auth-Users,Nav,Seeds,Permission seeds for 7 left-nav modules,DB,"Ensure Admissions, Students, Faculty, Academics, LMS, Exams, Fees appear when permitted.",Not Started,Arnav,Critical,Phase 0,Precious requests new permission keys via seed PR owned by Arnav OR documents keys in contracts for Arnav to add.
+02 RBAC-Auth-Users,Nav,Config,"navConfig.js module metadata (icon, path, order)",Frontend,Single nav metadata file owned by Arnav; Precious only proposes new entries via PR note — Arnav merges nav keys.,Not Started,Arnav,Critical,Phase 0,Prevents Sidebar edit conflicts.
+02 RBAC-Auth-Users,Audit,Backend,Log permission & user changes,Backend,Write AuditLog on role/permission/user updates.,Not Started,Arnav,Medium,Phase 1,
+03 Shared-Platform-Masters,Academic Year,DB,models/AcademicYear.js,DB,"name, code, start_date, end_date, is_current, is_active.",Not Started,Arnav,Critical,Phase 1,Maps to WTI Academic Year master + Admissions master list.
+03 Shared-Platform-Masters,Academic Year,Backend,CRUD /api/academic-years,Backend,In coreRoutes; set-current endpoint.,Not Started,Arnav,Critical,Phase 1,
+03 Shared-Platform-Masters,Academic Year,Frontend,pages/settings/AcademicYearList/Form,Frontend,Masters-style list under Settings or Shared Masters; card entry from platform masters grid.,Not Started,Arnav,High,Phase 1,
+03 Shared-Platform-Masters,Department,DB,models/Department.js,DB,"name, code, head_user_id?, is_active.",Not Started,Arnav,Critical,Phase 1,WTI Department Master parity.
+03 Shared-Platform-Masters,Department,Backend,CRUD /api/departments,Backend,coreRoutes.,Not Started,Arnav,Critical,Phase 1,
+03 Shared-Platform-Masters,Department,Frontend,pages/settings/DepartmentList/Form,Frontend,CRUD UI.,Not Started,Arnav,High,Phase 1,
+03 Shared-Platform-Masters,Program/Course,DB,models/Program.js (Course Master),DB,"name, code, department_id, duration, program_type (trade/diploma/degree), intake_default, is_active. Description field for WTI Course Master card.",Not Started,Arnav,Critical,Phase 1,WTI Course Master; Precious links subjects later via program_id.
+03 Shared-Platform-Masters,Program/Course,Backend,CRUD /api/programs,Backend,coreRoutes.,Not Started,Arnav,Critical,Phase 1,
+03 Shared-Platform-Masters,Program/Course,Frontend,pages/settings/ProgramList/Form,Frontend,Course master UI matching WTI card description: trade/diploma courses.,Not Started,Arnav,High,Phase 1,
+03 Shared-Platform-Masters,Institution Settings,DB/UI,Institution profile + FY display settings,All,"Name, address, logo stub, default FY — TopBar context.",Not Started,Arnav,Medium,Phase 1,
+03 Shared-Platform-Masters,Shared Masters Hub,Frontend,pages/settings/SharedMastersHub.jsx,Frontend,"Card grid (WTI Masters style) linking Academic Year, Department, Program — 11-module visual language.",Not Started,Arnav,High,Phase 1,UI reference: /app/wti/masters.
+03 Shared-Platform-Masters,API contracts,Docs,Document GET list shapes for Precious consumers,Docs,"programs, departments, academic-years list DTOs in docs/contracts.md.",Not Started,Arnav,High,Phase 1,Precious blocked until these APIs stable.
+03 Shared-Platform-Masters,Seeds,DB,"Seed sample AY, Depts, Programs",DB,Enough data for Faculty/Academics development.,Not Started,Arnav,High,Phase 1,
+04 Admissions,Admissions,Frontend,Admissions module routes + ModuleShell tabs,Frontend,Dashboard | Masters | Transactions | Reports under /admissions/* — same pattern as WTI.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Admissions,Frontend,Admissions Masters card grid,Frontend,"Cards for: Academic Year (link), Admission Cycle, Programs, Departments (link), Intake, Categories, Eligibility, Document Checklist, Fee Mapping, Scholarship Rules, Statuses.",Not Started,Arnav,Critical,Phase 1,Visual parity with WTI masters cards.
+04 Admissions,Admission Cycle,DB,models/AdmissionCycle.js,DB,"academic_year_id, name, start_date, end_date, status (draft|open|closed).",Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Intake Capacity,DB,models/IntakeCapacity.js,DB,"cycle_id, program_id, category_id?, seats.",Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Admission Category,DB,models/AdmissionCategory.js,DB,"name, code, quota_percent?, is_active.",Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Eligibility,DB,models/EligibilityCriteria.js,DB,"program_id, min_qualification, min_marks, rules_json.",Not Started,Arnav,High,Phase 1,
+04 Admissions,Document Checklist,DB,models/AdmissionDocumentType.js,DB,"name, mandatory, applies_to_program_ids[].",Not Started,Arnav,High,Phase 1,
+04 Admissions,Fee Structure Mapping,DB,Admission↔FeeStructure link fields,DB,Map program + cycle to fee_structure_id (Fees module).,Not Started,Arnav,Critical,Phase 1,Coordinates with Fees masters owned by Arnav.
+04 Admissions,Scholarship Rules,DB,models/ScholarshipRule.js (admission-facing),DB,"name, criteria_json, benefit_json; shared with Fees adjustments.",Not Started,Arnav,High,Phase 1,
+04 Admissions,Admission Status,DB,Status enum/master,DB,"Applied, Docs Pending, Eligible, Merit Listed, Allotted, Approved, Fee Pending, Enrolled, Rejected, Waitlisted.",Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Masters,Backend/UI,CRUD APIs + list/form pages for all admission masters,All,"Each master: model, routes in coreRoutes, List+Form pages under pages/admissions/masters/.",Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Application,DB,models/AdmissionApplication.js,DB,"personal, academic, program_preferences[], category_id, cycle_id, status, merit_score?.",Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Application,Backend,POST/GET/PUT /api/admissions/applications,Backend,Register application; list/filter by cycle/status.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Documents,Backend,Document upload + verification endpoints,Backend,Upload files; verify/reject checklist items; AI OCR stub hook for authenticity/completeness.,Not Started,Arnav,High,Phase 1,AI: OCR stub — flag Phase 2 for real OCR.
+04 Admissions,Eligibility,Backend,Eligibility validation service,Backend,Validate applicant vs program criteria; set Eligible/Ineligible.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Merit,Backend,Merit list generation,Backend,Rank by merit_score + category quotas; generate MeritList records.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Counseling,Backend,Seat allocation / counseling,Backend,Allot seats against IntakeCapacity; waitlist overflow.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Approval,Backend,Admission approval action,Backend,Committee approve/reject allotted seat; audit log.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Fee confirm,Backend,Fee payment confirmation → enrollment trigger,Backend,"On fee.paid (Fees API), convert applicant → Student; generate roll_no + student_id.",Not Started,Arnav,Critical,Phase 1,Contract: admission.enrolled.
+04 Admissions,Enrollment,Backend,Student enrollment service,Backend,Create Student from application; no re-entry of personal data.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Transactions UI,Frontend,"Application list, detail, verify, allot, approve screens",Frontend,pages/admissions/transactions/* workflow screens.,Not Started,Arnav,Critical,Phase 1,
+04 Admissions,Reports,Backend/UI,"Admission Summary, Application Status, Seat Availability, Pending, Merit List, Conversion",All,Filter by cycle/program; export CSV; charts where useful.,Not Started,Arnav,High,Phase 2,Maps client: Student admission reports.
+04 Admissions,Dashboard,Frontend,Admissions mini-dashboard widgets,Frontend,"Applications today, pending verify, seats left, conversion %.",Not Started,Arnav,Medium,Phase 2,
+05 Students,Students,Frontend,Students ModuleShell + Masters card grid,Frontend,"Masters cards: Categories, Status, Parent Relationship, Hostel Types, Transport Routes, Groups, Clubs.",Not Started,Arnav,Critical,Phase 1,
+05 Students,Student masters,DB,"Category, Status, HostelType, TransportRoute, StudentGroup, Club models",DB,Config masters per functional spec.,Not Started,Arnav,Critical,Phase 1,
+05 Students,Student masters,Backend/UI,CRUD APIs + pages for student masters,All,pages/students/masters/*.,Not Started,Arnav,High,Phase 1,
+05 Students,Student,DB,models/Student.js,DB,"student_id, roll_no, application_id?, personal, guardian[], program_id, academic_year_id, status, category_id, documents[].",Not Started,Arnav,Critical,Phase 1,Single owner — Precious reads via API only.
+05 Students,Student,Backend,CRUD /api/students + profile endpoints,Backend,"Profile update, document management, search/directory.",Not Started,Arnav,Critical,Phase 1,
+05 Students,Student,Frontend,"StudentList, StudentProfile, DocumentManager",Frontend,"Directory + profile tabs (personal, academic, guardian, docs).",Not Started,Arnav,Critical,Phase 1,
+05 Students,Hostel,DB/API/UI,Hostel allocation,All,Allocate hostel type/room; vacate; report.,Not Started,Arnav,Medium,Phase 2,
+05 Students,Transport,DB/API/UI,Transport allocation,All,Assign route; report.,Not Started,Arnav,Medium,Phase 2,
+05 Students,Medical,DB/API/UI,Medical records stub,All,Basic medical note records on student.,Not Started,Arnav,Low,Phase 3,
+05 Students,Promotion,Backend/UI,Semester promotion,All,Promote based on Academics/Exams results signal; update semester standing.,Not Started,Arnav,Critical,Phase 2,Consumes result.published / academics promotion contract from Precious.
+05 Students,Transfer,Backend/UI,Student transfer,All,Transfer program/campus fields; audit.,Not Started,Arnav,Medium,Phase 2,
+05 Students,Alumni,Backend/UI,Alumni conversion,All,On graduation criteria → status Alumni; alumni directory.,Not Started,Arnav,High,Phase 2,
+05 Students,Semester reg handoff,Backend,Expose enrolled students for Academics registration,Backend,GET students by program/semester for Precious Academics.,Not Started,Arnav,Critical,Phase 1,
+05 Students,Reports,All,"Directory, Strength, Attendance Summary (read), Hostel, Transport, Alumni",All,Attendance summary may call Academics attendance API (Precious) read-only.,Not Started,Arnav,High,Phase 2,Client: student records MIS.
+06 Faculty,Faculty,Frontend,Faculty ModuleShell + Masters card grid,Frontend,"Cards: Departments (read-only link), Designations, Faculty Types, Qualifications, Subject Masters, Workload Rules. Match WTI Faculty Master card tone.",Not Started,Precious,Critical,Phase 1,Do not edit Department model — consume Arnav API.
+06 Faculty,Designation,DB,models/Designation.js,DB,"name, code, is_active.",Not Started,Precious,Critical,Phase 1,
+06 Faculty,Faculty Type,DB,models/FacultyType.js,DB,Permanent/Visiting/Trainer etc.,Not Started,Precious,High,Phase 1,
+06 Faculty,Qualification,DB,models/QualificationMaster.js,DB,degree/cert list for faculty profiles.,Not Started,Precious,Medium,Phase 1,
+06 Faculty,Subject Master,DB,models/Subject.js,DB,"name, code, program_id, theory/practical flag, credits — WTI Subject Master.",Not Started,Precious,Critical,Phase 1,Arnav Admissions does not own subjects.
+06 Faculty,Workload Rules,DB,models/WorkloadRule.js,DB,"max_hours_per_week, designation_id?, rules_json.",Not Started,Precious,High,Phase 1,
+06 Faculty,Masters,Backend/UI,CRUD for faculty masters + Subject,All,academicRoutes; pages/faculty/masters/*.,Not Started,Precious,Critical,Phase 1,
+06 Faculty,Faculty,DB,models/Faculty.js,DB,"employee_code, personal, department_id, designation_id, type_id, qualifications[], subjects[], user_id?, is_active.",Not Started,Precious,Critical,Phase 1,WTI Faculty Master profiles.
+06 Faculty,Faculty,Backend/UI,Faculty registration CRUD + directory,All,"Register, map department/designation, link optional User.",Not Started,Precious,Critical,Phase 1,
+06 Faculty,Subject allocation,Backend/UI,Assign subjects to faculty,All,Respect workload rules + specialization.,Not Started,Precious,Critical,Phase 1,
+06 Faculty,Timetable assign,Backend,API for Academics to attach faculty to slots,Backend,Expose faculty availability helpers used by Academics timetable.,Not Started,Precious,Critical,Phase 1,Same owner as Academics — ok to share services.
+06 Faculty,Attendance,Backend/UI,Faculty attendance / punch or mark,All,Daily faculty attendance records.,Not Started,Precious,High,Phase 2,Client: Faculty and attendance reports.
+06 Faculty,Leave,Backend/UI,Leave management,All,Apply/approve leave; block timetable conflicts later.,Not Started,Precious,High,Phase 2,
+06 Faculty,Performance,Backend/UI,Performance evaluation stub,All,Periodic rating records + dashboard widgets.,Not Started,Precious,Medium,Phase 3,
+06 Faculty,Research/Training,Backend/UI,Research & training records,All,Publications + training log on faculty profile.,Not Started,Precious,Low,Phase 3,
+06 Faculty,Reports,All,"Faculty Directory, Workload, Attendance, Leave, Performance Dashboard",All,pages/faculty/reports/*.,Not Started,Precious,High,Phase 2,
+07 Academics,Academics,Frontend,Academics ModuleShell + Masters cards,Frontend,"Programs (read), Semesters, Subjects (link), Curriculum, Credits, Academic Calendar, Classrooms, TimeSlots, Batches — WTI Batch/Classroom/Semester parity.",Not Started,Precious,Critical,Phase 1,
+07 Academics,Semester,DB,models/Semester.js,DB,"name, number, academic_year_id, start/end, is_active — WTI Semester master.",Not Started,Precious,Critical,Phase 1,
+07 Academics,Batch,DB,models/Batch.js,DB,"name, program_id, academic_year_id, semester_id?, capacity — WTI Batch Master.",Not Started,Precious,Critical,Phase 1,
+07 Academics,Classroom,DB,models/Classroom.js,DB,"name, type (classroom|lab|workshop), capacity — WTI Classroom master.",Not Started,Precious,Critical,Phase 1,
+07 Academics,Time Slot,DB,models/TimeSlot.js,DB,"label, start_time, end_time, day_optional.",Not Started,Precious,Critical,Phase 1,
+07 Academics,Curriculum,DB,models/Curriculum.js + CurriculumSubject,DB,"program_id, semester_id, subject_id, credits, is_elective.",Not Started,Precious,Critical,Phase 1,
+07 Academics,Academic Calendar,DB,models/AcademicCalendarEvent.js,DB,"events: term start/end, holidays, exam windows.",Not Started,Precious,High,Phase 1,
+07 Academics,Masters,Backend/UI,CRUD APIs + pages for academics masters,All,academicRoutes; pages/academics/masters/*.,Not Started,Precious,Critical,Phase 1,
+07 Academics,Registration,Backend/UI,Semester + subject registration,All,Register student (from Arnav Students API) into semester subjects.,Not Started,Precious,Critical,Phase 1,Consume Students API — no Student model edits.
+07 Academics,Batch allocation,Backend/UI,Allocate students to batches,All,Batch membership records.,Not Started,Precious,Critical,Phase 1,
+07 Academics,Timetable,DB,models/TimetableSlot.js,DB,"batch_id, subject_id, faculty_id, classroom_id, day, time_slot_id.",Not Started,Precious,Critical,Phase 1,
+07 Academics,Timetable,Backend,AI-assisted conflict-free timetable generator,Backend,Detect faculty/classroom/batch conflicts; generate draft; publish.,Not Started,Precious,Critical,Phase 2,AI capability per functional spec.
+07 Academics,Timetable,Frontend,Timetable grid UI + publish,Frontend,Weekly grid; conflict highlights.,Not Started,Precious,Critical,Phase 2,
+07 Academics,Attendance,DB/API/UI,Student class attendance,All,Mark per timetable slot; store attendance records.,Not Started,Precious,Critical,Phase 1,Client faculty/attendance reports feed.
+07 Academics,Assignments/IA,Backend/UI,Assignment creation + internal assessments,All,Internal marks components before Exams module finals.,Not Started,Precious,High,Phase 2,
+07 Academics,Reports,All,"Timetable, Attendance, Academic Progress, Course Completion, Class Utilization",All,pages/academics/reports/*.,Not Started,Precious,High,Phase 2,Client: scheduling + institutional MIS pieces.
+08 LMS,LMS,Frontend,LMS ModuleShell + Masters cards,Frontend,"Course Categories, Learning Paths, Assignment Templates, Quiz Templates, Assessment Types.",Not Started,Precious,Critical,Phase 2,
+08 LMS,LMS masters,DB,"Category, LearningPath, AssignmentTemplate, QuizTemplate, AssessmentType",DB,Config masters per spec.,Not Started,Precious,High,Phase 2,
+08 LMS,LMS masters,Backend/UI,CRUD + master pages,All,pages/lms/masters/*.,Not Started,Precious,High,Phase 2,
+08 LMS,Course,DB,models/LmsCourse.js,DB,"title, subject_id?, faculty_id, modules/topics, objectives, published.",Not Started,Precious,Critical,Phase 2,
+08 LMS,Content,Backend/UI,Content upload + publish,All,Files/links/videos metadata; publish to enrolled students.,Not Started,Precious,Critical,Phase 2,
+08 LMS,Enrollment sync,Backend,Enroll students from Academics batch/subject,Backend,Pull registered students via Academics/Students APIs.,Not Started,Precious,Critical,Phase 2,
+08 LMS,Assignment/Quiz,Backend/UI,Create assignments & quizzes; student submission,All,Submission records; due dates.,Not Started,Precious,Critical,Phase 2,
+08 LMS,Forums/Live,Backend/UI,Discussion forums + live class stub,All,Forum threads; live class link stub (Zoom/Meet URL).,Not Started,Precious,Medium,Phase 3,
+08 LMS,Evaluation,Backend/UI,Evaluate submissions + AI-assist stub,All,Scores + feedback; AI grading assist stub.,Not Started,Precious,High,Phase 2,
+08 LMS,Progress,Backend,Learning progress + course completion,Backend,Realtime progress %; completion status.,Not Started,Precious,Critical,Phase 2,
+08 LMS,Reports,All,"Learning Progress, Course Completion, Assignment Status, Quiz Analytics, Engagement",All,pages/lms/reports/*.,Not Started,Precious,High,Phase 2,
+09 Exams,Exams,Frontend,Exams ModuleShell + Masters cards,Frontend,"Exam Types, Grading Scheme, Passing Rules, Evaluation Rules, Result Templates.",Not Started,Precious,Critical,Phase 2,
+09 Exams,Exam masters,DB,"ExamType, GradingScheme, PassingRule, EvaluationRule, ResultTemplate",DB,Config per functional spec.,Not Started,Precious,Critical,Phase 2,
+09 Exams,Exam masters,Backend/UI,CRUD + pages,All,pages/exams/masters/*.,Not Started,Precious,Critical,Phase 2,
+09 Exams,Schedule,DB/API/UI,Exam scheduling,All,"Dates, subjects, rules; publish to students.",Not Started,Precious,Critical,Phase 2,
+09 Exams,Hall ticket,Backend/UI,Hall ticket generation,All,Eligible students; PDF/print stub; center/seating info.,Not Started,Precious,Critical,Phase 2,
+09 Exams,Seating,Backend/UI,Seating arrangement,All,Allocate seats/rooms for exam sessions.,Not Started,Precious,High,Phase 2,
+09 Exams,Marks,Backend/UI,Theory + practical mark entry,All,Faculty/evaluator entry; lock after submit.,Not Started,Precious,Critical,Phase 2,
+09 Exams,Results,Backend,Result processing vs grading/passing rules,Backend,Compute grades; backlog flags.,Not Started,Precious,Critical,Phase 2,
+09 Exams,Publish,Backend/UI,Publish results + notify student record,All,Emit result.published for Students/Academics promotion consumers.,Not Started,Precious,Critical,Phase 2,Contract for Arnav promotion.
+09 Exams,Revaluation,Backend/UI,Revaluation workflow,All,Request → re-enter marks → revise result.,Not Started,Precious,Medium,Phase 3,
+09 Exams,Transcript/Certificate,Backend/UI,Transcript + certificate generation,All,PDF stubs; store documents on student via API or local exam docs table referencing student_id.,Not Started,Precious,High,Phase 2,Client: certification and examination management.
+09 Exams,Reports,All,"Result Analysis, Grade Distribution, Pass %, Subject Analysis, Topper, Backlog",All,pages/exams/reports/*.,Not Started,Precious,High,Phase 2,
+10 Fees,Fees,Frontend,Fees ModuleShell + Masters cards,Frontend,"Fee Structure, Fee Heads, Payment Modes, Installments, Scholarships, Fine/Penalty, Tax, Refund Policies.",Not Started,Arnav,Critical,Phase 1,Client billing→receipt + auto email.
+10 Fees,Fee Head,DB,models/FeeHead.js,DB,"name, code, tax_applicable, is_active.",Not Started,Arnav,Critical,Phase 1,
+10 Fees,Fee Structure,DB,models/FeeStructure.js,DB,"program_id, academic_year_id, heads[], installment_plan_id?, total.",Not Started,Arnav,Critical,Phase 1,
+10 Fees,Payment Mode,DB,models/PaymentMode.js,DB,"cash, UPI, card, bank, online gateway stub.",Not Started,Arnav,High,Phase 1,
+10 Fees,Installment Plan,DB,models/InstallmentPlan.js,DB,schedule JSON: due dates / percentages.,Not Started,Arnav,High,Phase 1,
+10 Fees,Fine/Tax/Refund,DB,"FineRule, TaxConfig, RefundPolicy models",DB,Per functional spec masters.,Not Started,Arnav,High,Phase 1,
+10 Fees,Masters,Backend/UI,CRUD + fee master pages,All,pages/fees/masters/*.,Not Started,Arnav,Critical,Phase 1,
+10 Fees,Assignment,Backend/UI,Generate + assign fees to students,All,Map structure to enrolled students; admission fee assignment.,Not Started,Arnav,Critical,Phase 1,
+10 Fees,Collection,DB,models/FeePayment.js + StudentFeeLedger,DB,Payments online/offline; installment tracking; outstanding.,Not Started,Arnav,Critical,Phase 1,
+10 Fees,Collection,Backend/UI,Collect payment screens + APIs,All,Record payment; update ledger.,Not Started,Arnav,Critical,Phase 1,
+10 Fees,Receipt,Backend,Auto receipt generation on successful payment,Backend,Digital receipt number; PDF stub; store electronic record.,Not Started,Arnav,Critical,Phase 1,Client process note requirement.
+10 Fees,Tax Invoice,Backend,Tax Invoice generation on payment confirmation,Backend,Generate tax invoice; email invoice + receipt to registered email (mailer).,Not Started,Arnav,Critical,Phase 2,Client automated communication.
+10 Fees,Scholarship/Fine,Backend/UI,Scholarship adjustment + fine calculation,All,Adjust dues; apply fines per rules.,Not Started,Arnav,High,Phase 2,
+10 Fees,Refund,Backend/UI,Refund processing,All,Refund workflow + policy checks; audit.,Not Started,Arnav,High,Phase 2,
+10 Fees,Outstanding,Backend/UI,Outstanding fee management,All,"Lists, reminders stub, block hall ticket flag API for Exams consumer.",Not Started,Arnav,High,Phase 2,Precious Exams reads dues flag via API.
+10 Fees,Admission bridge,Backend,Admission fee payment confirmation API,Backend,Endpoint/event used by Admissions enrollment step.,Not Started,Arnav,Critical,Phase 1,Same owner — internal contract.
+10 Fees,Reports,All,"Collection, Outstanding, Daily Collection, Student Ledger, Scholarship, Refund, Revenue Dashboard",All,"Also Invoice Status, Receipt Generation, Ageing-style outstanding (client finance-lite).",Not Started,Arnav,High,Phase 2,Client: Fee collection reports + course-wise profitability later.
+11 Dashboard-Reports,Dashboard,Frontend,pages/dashboard/InstitutionDashboard.jsx,Frontend,"WTI-style dashboard home: admissions funnel, student strength, fee collection MTD, upcoming exams, attendance snapshot, pending approvals.",Not Started,Arnav,Critical,Phase 2,Shell/layout already Arnav; widgets call module APIs.
+11 Dashboard-Reports,Dashboard,Backend,GET /api/dashboard/summary,Backend,"Aggregates counts Arnav owns (admissions, students, fees); embeds optional precious metrics via HTTP internal calls or shared read models.",Not Started,Arnav,Critical,Phase 2,Agree metric contracts with Precious.
+11 Dashboard-Reports,Dashboard,Frontend,Pending tasks / approvals widget,Frontend,"Pending admission approvals, pending fee follow-ups — process visibility per client note.",Not Started,Arnav,High,Phase 2,
+11 Dashboard-Reports,Dashboard APIs,Backend,GET /api/dashboard/faculty-academics-summary,Backend,"Faculty count, today's classes, attendance %, open exams — academicRoutes.",Not Started,Precious,High,Phase 2,Arnav dashboard consumes this read API only.
+11 Dashboard-Reports,Dashboard APIs,Backend,GET /api/dashboard/lms-exams-summary,Backend,LMS engagement + exam schedule/result publish stats.,Not Started,Precious,Medium,Phase 2,
+11 Dashboard-Reports,MIS,Reports,Institutional MIS report page (admin),Frontend,"Combined MIS: admissions conversion, fee collection, attendance, pass % — tabs; Arnav page composing APIs.",Not Started,Arnav,High,Phase 3,Client: Institutional MIS reports.
+11 Dashboard-Reports,MIS,Reports,Course-wise profitability (fees vs cost stub),All,Revenue by program from Fees; cost stub fields — Phase 3.,Not Started,Arnav,Medium,Phase 3,Client: Course-wise profitability reports.
+11 Dashboard-Reports,Compliance,Reports,Compliance & audit report stub,All,Export audit log filters; compliance checklist stub.,Not Started,Arnav,Medium,Phase 3,Client: Compliance and audit reports.
+11 Dashboard-Reports,UI parity,Frontend,Dashboard visual match to WTI Dashboard,Frontend,"Spacing, cards, banner, KPI tiles consistent with reference ERP.",Not Started,Arnav,High,Phase 2,Reference /app/wti/dashboard.
+11 Dashboard-Reports,Module reports registry,Docs,List each module report owner + path,Docs,Ensure every report in functional spec is tracked Done in module sheets.,Not Started,Both,Medium,Phase 2,
+12 Phases-Acceptance,Phase 0,Milestone,Scaffold + merge-safe routing + ERP shell + RBAC + login merged,All,Precious can branch; nav shows 7 modules (empty shells ok).,Not Started,Both,Critical,Phase 0,Arnav merges first.
+12 Phases-Acceptance,Phase 0,UI,"Left nav labels exactly: Admissions, Students, Faculty, Academics, LMS, Exams, Fees",Frontend,Order and naming locked.,Not Started,Arnav,Critical,Phase 0,
+12 Phases-Acceptance,Phase 0,UI,ModuleShell tabs Dashboard | Masters | Transactions | Reports on each module stub,Frontend,Empty states with WTI-like banner.,Not Started,Arnav,Critical,Phase 0,Precious uses same shell for owned modules.
+12 Phases-Acceptance,Phase 1,Milestone,Shared masters + Admissions + Students + Fees core + Faculty masters/profiles + Academics masters/registration/attendance,All,End-to-end: apply → pay → enroll → appear in academics registration.,Not Started,Both,Critical,Phase 1,
+12 Phases-Acceptance,Phase 1,Contract test,admission.enrolled creates Student readable by Precious,All,Integration smoke test documented.,Not Started,Both,Critical,Phase 1,
+12 Phases-Acceptance,Phase 2,Milestone,"Timetable AI, LMS core, Exams core, Fee tax invoice email, Dashboards, major reports",All,Teaching/learning/exam/fee loop working.,Not Started,Both,Critical,Phase 2,
+12 Phases-Acceptance,Phase 2,Contract test,result.published usable for promotion; dues flag blocks hall ticket,All,Cross-module smoke tests.,Not Started,Both,Critical,Phase 2,
+12 Phases-Acceptance,Phase 3,Milestone,"Alumni, revaluation, forums/live polish, performance, profitability/compliance MIS, AI OCR real integration optional",All,Polish + advanced items.,Not Started,Both,High,Phase 3,
+12 Phases-Acceptance,UI,Parity,Left sidebar module list styling,Frontend,"Active state, icons, collapsible behavior similar to reference.",Not Started,Arnav,High,Phase 0,https://erp.smart-aiapps.com/app/wti/dashboard
+12 Phases-Acceptance,UI,Parity,"Top context bar (workspace, search, FY, location)",Frontend,Present on all pages.,Not Started,Arnav,High,Phase 0,
+12 Phases-Acceptance,UI,Parity,Blue module banner title + subtitle + badge count on Masters,Frontend,Masters landing shows module count badge like '11 MODULES'.,Not Started,Arnav,High,Phase 1,
+12 Phases-Acceptance,UI,Parity,"Masters card grid: icon, title, description, Open module link",Frontend,Same interaction pattern as WTI Masters.,Not Started,Arnav,Critical,Phase 1,Precious follows same card component.
+12 Phases-Acceptance,UI,Parity,List/table pages consistent density and primary actions,Frontend,Shared DataTable.,Not Started,Both,High,Phase 1,
+12 Phases-Acceptance,UAT,Admissions,Full workflow application→enrollment with fee payment,All,Demo script pass.,Not Started,Arnav,Critical,Phase 1,
+12 Phases-Acceptance,UAT,Students,"Profile, hostel/transport, promotion, alumni path",All,Demo script pass.,Not Started,Arnav,High,Phase 2,
+12 Phases-Acceptance,UAT,Faculty/Academics,Faculty assign → timetable → attendance,All,Demo script pass.,Not Started,Precious,Critical,Phase 2,
+12 Phases-Acceptance,UAT,LMS/Exams,Course content → submission → exam → result publish,All,Demo script pass.,Not Started,Precious,Critical,Phase 2,
+12 Phases-Acceptance,UAT,Fees,"Assign, collect, receipt, email invoice/receipt, outstanding",All,Demo script pass per client process note.,Not Started,Arnav,Critical,Phase 2,
+12 Phases-Acceptance,UAT,E2E,Single student journey application to alumni (happy path),All,No duplicate data entry across modules.,Not Started,Both,Critical,Phase 3,
+12 Phases-Acceptance,UAT,RBAC,Each role sees only permitted nav modules/actions,All,Permission matrix verified.,Not Started,Arnav,Critical,Phase 1,
+12 Phases-Acceptance,Docs,Handoff,README + seed credentials + tracker status updated,Docs,Keep this tracker Status column current as work proceeds.,Not Started,Both,High,Phase 0,

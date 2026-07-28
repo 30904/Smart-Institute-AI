@@ -1,0 +1,14 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+INSTITUTION DASHBOARD,,,,,Not Started,,,,
+Dashboard,Frontend,pages/dashboard/InstitutionDashboard.jsx,Frontend,"WTI-style dashboard home: admissions funnel, student strength, fee collection MTD, upcoming exams, attendance snapshot, pending approvals.",Not Started,Arnav,Critical,Phase 2,Shell/layout already Arnav; widgets call module APIs.
+Dashboard,Backend,GET /api/dashboard/summary,Backend,"Aggregates counts Arnav owns (admissions, students, fees); embeds optional precious metrics via HTTP internal calls or shared read models.",Not Started,Arnav,Critical,Phase 2,Agree metric contracts with Precious.
+Dashboard,Frontend,Pending tasks / approvals widget,Frontend,"Pending admission approvals, pending fee follow-ups — process visibility per client note.",Not Started,Arnav,High,Phase 2,
+PRECIOUS — MODULE DASHBOARD WIDGETS,,,,,Not Started,,,,
+Dashboard APIs,Backend,GET /api/dashboard/faculty-academics-summary,Backend,"Faculty count, today's classes, attendance %, open exams — academicRoutes.",Not Started,Precious,High,Phase 2,Arnav dashboard consumes this read API only.
+Dashboard APIs,Backend,GET /api/dashboard/lms-exams-summary,Backend,LMS engagement + exam schedule/result publish stats.,Not Started,Precious,Medium,Phase 2,
+CROSS-MODULE MIS,,,,,Not Started,,,,
+MIS,Reports,Institutional MIS report page (admin),Frontend,"Combined MIS: admissions conversion, fee collection, attendance, pass % — tabs; Arnav page composing APIs.",Not Started,Arnav,High,Phase 3,Client: Institutional MIS reports.
+MIS,Reports,Course-wise profitability (fees vs cost stub),All,Revenue by program from Fees; cost stub fields — Phase 3.,Not Started,Arnav,Medium,Phase 3,Client: Course-wise profitability reports.
+Compliance,Reports,Compliance & audit report stub,All,Export audit log filters; compliance checklist stub.,Not Started,Arnav,Medium,Phase 3,Client: Compliance and audit reports.
+UI parity,Frontend,Dashboard visual match to WTI Dashboard,Frontend,"Spacing, cards, banner, KPI tiles consistent with reference ERP.",Not Started,Arnav,High,Phase 2,Reference /app/wti/dashboard.
+Module reports registry,Docs,List each module report owner + path,Docs,Ensure every report in functional spec is tracked Done in module sheets.,Not Started,Both,Medium,Phase 2,

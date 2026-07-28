@@ -1,0 +1,25 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+PHASE MILESTONES,,,,,Not Started,,,,
+Phase 0,Milestone,Scaffold + merge-safe routing + ERP shell + RBAC + login merged,All,Precious can branch; nav shows 7 modules (empty shells ok).,Not Started,Both,Critical,Phase 0,Arnav merges first.
+Phase 0,UI,"Left nav labels exactly: Admissions, Students, Faculty, Academics, LMS, Exams, Fees",Frontend,Order and naming locked.,Not Started,Arnav,Critical,Phase 0,
+Phase 0,UI,ModuleShell tabs Dashboard | Masters | Transactions | Reports on each module stub,Frontend,Empty states with WTI-like banner.,Not Started,Arnav,Critical,Phase 0,Precious uses same shell for owned modules.
+Phase 1,Milestone,Shared masters + Admissions + Students + Fees core + Faculty masters/profiles + Academics masters/registration/attendance,All,End-to-end: apply → pay → enroll → appear in academics registration.,Not Started,Both,Critical,Phase 1,
+Phase 1,Contract test,admission.enrolled creates Student readable by Precious,All,Integration smoke test documented.,Not Started,Both,Critical,Phase 1,
+Phase 2,Milestone,"Timetable AI, LMS core, Exams core, Fee tax invoice email, Dashboards, major reports",All,Teaching/learning/exam/fee loop working.,Not Started,Both,Critical,Phase 2,
+Phase 2,Contract test,result.published usable for promotion; dues flag blocks hall ticket,All,Cross-module smoke tests.,Not Started,Both,Critical,Phase 2,
+Phase 3,Milestone,"Alumni, revaluation, forums/live polish, performance, profitability/compliance MIS, AI OCR real integration optional",All,Polish + advanced items.,Not Started,Both,High,Phase 3,
+UI PARITY CHECKLIST (vs Celeris WTI),,,,,Not Started,,,,
+UI,Parity,Left sidebar module list styling,Frontend,"Active state, icons, collapsible behavior similar to reference.",Not Started,Arnav,High,Phase 0,https://erp.smart-aiapps.com/app/wti/dashboard
+UI,Parity,"Top context bar (workspace, search, FY, location)",Frontend,Present on all pages.,Not Started,Arnav,High,Phase 0,
+UI,Parity,Blue module banner title + subtitle + badge count on Masters,Frontend,Masters landing shows module count badge like '11 MODULES'.,Not Started,Arnav,High,Phase 1,
+UI,Parity,"Masters card grid: icon, title, description, Open module link",Frontend,Same interaction pattern as WTI Masters.,Not Started,Arnav,Critical,Phase 1,Precious follows same card component.
+UI,Parity,List/table pages consistent density and primary actions,Frontend,Shared DataTable.,Not Started,Both,High,Phase 1,
+UAT / ACCEPTANCE,,,,,Not Started,,,,
+UAT,Admissions,Full workflow application→enrollment with fee payment,All,Demo script pass.,Not Started,Arnav,Critical,Phase 1,
+UAT,Students,"Profile, hostel/transport, promotion, alumni path",All,Demo script pass.,Not Started,Arnav,High,Phase 2,
+UAT,Faculty/Academics,Faculty assign → timetable → attendance,All,Demo script pass.,Not Started,Precious,Critical,Phase 2,
+UAT,LMS/Exams,Course content → submission → exam → result publish,All,Demo script pass.,Not Started,Precious,Critical,Phase 2,
+UAT,Fees,"Assign, collect, receipt, email invoice/receipt, outstanding",All,Demo script pass per client process note.,Not Started,Arnav,Critical,Phase 2,
+UAT,E2E,Single student journey application to alumni (happy path),All,No duplicate data entry across modules.,Not Started,Both,Critical,Phase 3,
+UAT,RBAC,Each role sees only permitted nav modules/actions,All,Permission matrix verified.,Not Started,Arnav,Critical,Phase 1,
+Docs,Handoff,README + seed credentials + tracker status updated,Docs,Keep this tracker Status column current as work proceeds.,Not Started,Both,High,Phase 0,

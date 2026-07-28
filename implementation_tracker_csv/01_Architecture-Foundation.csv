@@ -1,0 +1,23 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+1. TECHNOLOGY STACK,,,,,Not Started,,,,
+Stack,Monorepo,Project scaffold (backend/ + frontend/),All,"Root scripts; backend Node+Express .js; frontend React+Vite .jsx; .env.example for MONGO_URI, JWT_SECRET, PORT, CLIENT_URL.",Not Started,Arnav,Critical,Phase 0,Precious clones after scaffold merged — do not scaffold in parallel.
+Stack,Frontend,React 18 + Vite (frontend/),Frontend,Responsive app; path aliases; ESLint. Mobile-friendly breakpoints for ERP tables.,Not Started,Arnav,Critical,Phase 0,
+Stack,Backend,Node.js + Express API (backend/),Backend,"REST folders: models/, routes/, controllers/, services/, middleware/, seeds/, utils/, config/.",Not Started,Arnav,Critical,Phase 0,
+Stack,Database,MongoDB + Mongoose connection,DB,config/db.js; GET /api/health.,Not Started,Arnav,Critical,Phase 0,
+Stack,Auth,JWT login + /api/auth/me,Backend,POST /api/auth/login; Bearer token; password_hash; /me returns user + permissions + institution context.,Not Started,Arnav,Critical,Phase 0,
+Stack,Charts,Recharts (or Chart.js) shared wrappers,Frontend,frontend/src/components/charts/ for dashboard + MIS reuse.,Not Started,Arnav,Medium,Phase 2,Precious imports wrappers — does not rewrite chart kit.
+Stack,Email,Email service stub (invoice/receipt later),Backend,utils/mailer.js stub; env SMTP placeholders. Wired in Fees Phase 2 for Tax Invoice + Receipt auto-email (client process note).,Not Started,Arnav,High,Phase 2,Aligns with client automated customer communication.
+2. FOLDER STRUCTURE & MERGE-SAFE ROUTING,,,,,Not Started,,,,
+Architecture,Route split,backend/routes/coreRoutes.js,Backend,"Arnav mounts Admissions, Students, Fees, Dashboard, Auth, Users, Shared Masters here.",Not Started,Arnav,Critical,Phase 0,Avoids both editing routes/index.js.
+Architecture,Route split,backend/routes/academicRoutes.js,Backend,"Precious mounts Faculty, Academics, LMS, Exams routes here.",Not Started,Precious,Critical,Phase 0,
+Architecture,Route split,frontend/src/routes/coreRoutes.jsx,Frontend,"Lazy routes: auth, dashboard, admissions, students, fees, users, shared masters screens.",Not Started,Arnav,Critical,Phase 0,
+Architecture,Route split,frontend/src/routes/academicRoutes.jsx,Frontend,"Lazy routes: faculty, academics, lms, exams.",Not Started,Precious,Critical,Phase 0,
+Architecture,App shell,WTI-style ERP Layout + Sidebar + TopBar,Frontend,"Match Celeris WTI: collapsible left nav with 7 modules (Admissions, Students, Faculty, Academics, LMS, Exams, Fees); top context bar (workspace, search, FY, location); blue module banner.",Not Started,Arnav,Critical,Phase 0,Precious does not edit Layout/Sidebar/TopBar.
+Architecture,Module chrome,ModuleShell — Dashboard | Masters | Transactions | Reports tabs,Frontend,Shared ModuleShell.jsx owned by Arnav; each module page composes it. Visual parity with /app/wti/masters card layout.,Not Started,Arnav,Critical,Phase 0,Precious imports ModuleShell only.
+Architecture,UI kit,"Shared components: MasterCardGrid, DataTable, PageHeader, StatusBadge, FormDrawer",Frontend,frontend/src/components/ui/ — Celeris-like cards for Masters landing; tables for lists; consistent primary blue accents.,Not Started,Arnav,Critical,Phase 0,Single owner; Precious imports.
+Architecture,API client,api/client.js + api/core/ + api/academic/,Frontend,"Axios + auth interceptor; split API folders by owner (core = Arnav, academic = Precious).",Not Started,Arnav,High,Phase 0,Precious creates only api/academic/* files.
+Architecture,Institution context,models/Institution.js + FY/Location context,DB,Seed institution; financial year + location in TopBar (parity with ERP context bar).,Not Started,Arnav,High,Phase 0,
+Architecture,Error handling,Global error middleware + response envelope,Backend,"{ success, data, message } shape; 4xx/5xx handlers.",Not Started,Arnav,Medium,Phase 0,
+Architecture,Audit log,models/AuditLog.js + helper,Backend,"Log admission approvals, fee overrides, result publish, permission changes, refunds.",Not Started,Arnav,High,Phase 0,Precious calls writeAudit helper — does not edit model.
+Architecture,Contracts doc,docs/contracts.md cross-module events,Docs,"Document: admission.enrolled, fee.paid, result.published, student.promoted, student.alumni.",Not Started,Both,Critical,Phase 0,Agree before feature coding.
+Architecture,Seed runner,backend/seeds/index.js,Backend,"Seed admin user, roles, permissions, institution, sample academic year.",Not Started,Arnav,Critical,Phase 0,

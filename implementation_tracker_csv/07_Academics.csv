@@ -1,0 +1,21 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+MODULE SHELL — ACADEMICS,,,,,Not Started,,,,
+Academics,Frontend,Academics ModuleShell + Masters cards,Frontend,"Programs (read), Semesters, Subjects (link), Curriculum, Credits, Academic Calendar, Classrooms, TimeSlots, Batches — WTI Batch/Classroom/Semester parity.",Not Started,Precious,Critical,Phase 1,
+MASTERS,,,,,Not Started,,,,
+Semester,DB,models/Semester.js,DB,"name, number, academic_year_id, start/end, is_active — WTI Semester master.",Not Started,Precious,Critical,Phase 1,
+Batch,DB,models/Batch.js,DB,"name, program_id, academic_year_id, semester_id?, capacity — WTI Batch Master.",Not Started,Precious,Critical,Phase 1,
+Classroom,DB,models/Classroom.js,DB,"name, type (classroom|lab|workshop), capacity — WTI Classroom master.",Not Started,Precious,Critical,Phase 1,
+Time Slot,DB,models/TimeSlot.js,DB,"label, start_time, end_time, day_optional.",Not Started,Precious,Critical,Phase 1,
+Curriculum,DB,models/Curriculum.js + CurriculumSubject,DB,"program_id, semester_id, subject_id, credits, is_elective.",Not Started,Precious,Critical,Phase 1,
+Academic Calendar,DB,models/AcademicCalendarEvent.js,DB,"events: term start/end, holidays, exam windows.",Not Started,Precious,High,Phase 1,
+Masters,Backend/UI,CRUD APIs + pages for academics masters,All,academicRoutes; pages/academics/masters/*.,Not Started,Precious,Critical,Phase 1,
+TRANSACTIONS,,,,,Not Started,,,,
+Registration,Backend/UI,Semester + subject registration,All,Register student (from Arnav Students API) into semester subjects.,Not Started,Precious,Critical,Phase 1,Consume Students API — no Student model edits.
+Batch allocation,Backend/UI,Allocate students to batches,All,Batch membership records.,Not Started,Precious,Critical,Phase 1,
+Timetable,DB,models/TimetableSlot.js,DB,"batch_id, subject_id, faculty_id, classroom_id, day, time_slot_id.",Not Started,Precious,Critical,Phase 1,
+Timetable,Backend,AI-assisted conflict-free timetable generator,Backend,Detect faculty/classroom/batch conflicts; generate draft; publish.,Not Started,Precious,Critical,Phase 2,AI capability per functional spec.
+Timetable,Frontend,Timetable grid UI + publish,Frontend,Weekly grid; conflict highlights.,Not Started,Precious,Critical,Phase 2,
+Attendance,DB/API/UI,Student class attendance,All,Mark per timetable slot; store attendance records.,Not Started,Precious,Critical,Phase 1,Client faculty/attendance reports feed.
+Assignments/IA,Backend/UI,Assignment creation + internal assessments,All,Internal marks components before Exams module finals.,Not Started,Precious,High,Phase 2,
+REPORTS,,,,,Not Started,,,,
+Reports,All,"Timetable, Attendance, Academic Progress, Course Completion, Class Utilization",All,pages/academics/reports/*.,Not Started,Precious,High,Phase 2,Client: scheduling + institutional MIS pieces.

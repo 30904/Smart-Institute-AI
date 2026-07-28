@@ -1,0 +1,20 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+MODULE SHELL — STUDENTS,,,,,Not Started,,,,
+Students,Frontend,Students ModuleShell + Masters card grid,Frontend,"Masters cards: Categories, Status, Parent Relationship, Hostel Types, Transport Routes, Groups, Clubs.",Not Started,Arnav,Critical,Phase 1,
+MASTERS,,,,,Not Started,,,,
+Student masters,DB,"Category, Status, HostelType, TransportRoute, StudentGroup, Club models",DB,Config masters per functional spec.,Not Started,Arnav,Critical,Phase 1,
+Student masters,Backend/UI,CRUD APIs + pages for student masters,All,pages/students/masters/*.,Not Started,Arnav,High,Phase 1,
+CORE STUDENT,,,,,Not Started,,,,
+Student,DB,models/Student.js,DB,"student_id, roll_no, application_id?, personal, guardian[], program_id, academic_year_id, status, category_id, documents[].",Not Started,Arnav,Critical,Phase 1,Single owner — Precious reads via API only.
+Student,Backend,CRUD /api/students + profile endpoints,Backend,"Profile update, document management, search/directory.",Not Started,Arnav,Critical,Phase 1,
+Student,Frontend,"StudentList, StudentProfile, DocumentManager",Frontend,"Directory + profile tabs (personal, academic, guardian, docs).",Not Started,Arnav,Critical,Phase 1,
+TRANSACTIONS,,,,,Not Started,,,,
+Hostel,DB/API/UI,Hostel allocation,All,Allocate hostel type/room; vacate; report.,Not Started,Arnav,Medium,Phase 2,
+Transport,DB/API/UI,Transport allocation,All,Assign route; report.,Not Started,Arnav,Medium,Phase 2,
+Medical,DB/API/UI,Medical records stub,All,Basic medical note records on student.,Not Started,Arnav,Low,Phase 3,
+Promotion,Backend/UI,Semester promotion,All,Promote based on Academics/Exams results signal; update semester standing.,Not Started,Arnav,Critical,Phase 2,Consumes result.published / academics promotion contract from Precious.
+Transfer,Backend/UI,Student transfer,All,Transfer program/campus fields; audit.,Not Started,Arnav,Medium,Phase 2,
+Alumni,Backend/UI,Alumni conversion,All,On graduation criteria → status Alumni; alumni directory.,Not Started,Arnav,High,Phase 2,
+Semester reg handoff,Backend,Expose enrolled students for Academics registration,Backend,GET students by program/semester for Precious Academics.,Not Started,Arnav,Critical,Phase 1,
+REPORTS,,,,,Not Started,,,,
+Reports,All,"Directory, Strength, Attendance Summary (read), Hostel, Transport, Alumni",All,Attendance summary may call Academics attendance API (Precious) read-only.,Not Started,Arnav,High,Phase 2,Client: student records MIS.

@@ -1,0 +1,21 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+MODULE SHELL — FACULTY,,,,,Not Started,,,,
+Faculty,Frontend,Faculty ModuleShell + Masters card grid,Frontend,"Cards: Departments (read-only link), Designations, Faculty Types, Qualifications, Subject Masters, Workload Rules. Match WTI Faculty Master card tone.",Not Started,Precious,Critical,Phase 1,Do not edit Department model — consume Arnav API.
+MASTERS,,,,,Not Started,,,,
+Designation,DB,models/Designation.js,DB,"name, code, is_active.",Not Started,Precious,Critical,Phase 1,
+Faculty Type,DB,models/FacultyType.js,DB,Permanent/Visiting/Trainer etc.,Not Started,Precious,High,Phase 1,
+Qualification,DB,models/QualificationMaster.js,DB,degree/cert list for faculty profiles.,Not Started,Precious,Medium,Phase 1,
+Subject Master,DB,models/Subject.js,DB,"name, code, program_id, theory/practical flag, credits — WTI Subject Master.",Not Started,Precious,Critical,Phase 1,Arnav Admissions does not own subjects.
+Workload Rules,DB,models/WorkloadRule.js,DB,"max_hours_per_week, designation_id?, rules_json.",Not Started,Precious,High,Phase 1,
+Masters,Backend/UI,CRUD for faculty masters + Subject,All,academicRoutes; pages/faculty/masters/*.,Not Started,Precious,Critical,Phase 1,
+TRANSACTIONS,,,,,Not Started,,,,
+Faculty,DB,models/Faculty.js,DB,"employee_code, personal, department_id, designation_id, type_id, qualifications[], subjects[], user_id?, is_active.",Not Started,Precious,Critical,Phase 1,WTI Faculty Master profiles.
+Faculty,Backend/UI,Faculty registration CRUD + directory,All,"Register, map department/designation, link optional User.",Not Started,Precious,Critical,Phase 1,
+Subject allocation,Backend/UI,Assign subjects to faculty,All,Respect workload rules + specialization.,Not Started,Precious,Critical,Phase 1,
+Timetable assign,Backend,API for Academics to attach faculty to slots,Backend,Expose faculty availability helpers used by Academics timetable.,Not Started,Precious,Critical,Phase 1,Same owner as Academics — ok to share services.
+Attendance,Backend/UI,Faculty attendance / punch or mark,All,Daily faculty attendance records.,Not Started,Precious,High,Phase 2,Client: Faculty and attendance reports.
+Leave,Backend/UI,Leave management,All,Apply/approve leave; block timetable conflicts later.,Not Started,Precious,High,Phase 2,
+Performance,Backend/UI,Performance evaluation stub,All,Periodic rating records + dashboard widgets.,Not Started,Precious,Medium,Phase 3,
+Research/Training,Backend/UI,Research & training records,All,Publications + training log on faculty profile.,Not Started,Precious,Low,Phase 3,
+REPORTS,,,,,Not Started,,,,
+Reports,All,"Faculty Directory, Workload, Attendance, Leave, Performance Dashboard",All,pages/faculty/reports/*.,Not Started,Precious,High,Phase 2,

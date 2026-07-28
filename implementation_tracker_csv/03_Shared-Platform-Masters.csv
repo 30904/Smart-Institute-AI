@@ -1,0 +1,15 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+ARNAV — FOUNDATION MASTERS (PRECIOUS CONSUMES VIA API),,,,,Not Started,,,,
+Academic Year,DB,models/AcademicYear.js,DB,"name, code, start_date, end_date, is_current, is_active.",Not Started,Arnav,Critical,Phase 1,Maps to WTI Academic Year master + Admissions master list.
+Academic Year,Backend,CRUD /api/academic-years,Backend,In coreRoutes; set-current endpoint.,Not Started,Arnav,Critical,Phase 1,
+Academic Year,Frontend,pages/settings/AcademicYearList/Form,Frontend,Masters-style list under Settings or Shared Masters; card entry from platform masters grid.,Not Started,Arnav,High,Phase 1,
+Department,DB,models/Department.js,DB,"name, code, head_user_id?, is_active.",Not Started,Arnav,Critical,Phase 1,WTI Department Master parity.
+Department,Backend,CRUD /api/departments,Backend,coreRoutes.,Not Started,Arnav,Critical,Phase 1,
+Department,Frontend,pages/settings/DepartmentList/Form,Frontend,CRUD UI.,Not Started,Arnav,High,Phase 1,
+Program/Course,DB,models/Program.js (Course Master),DB,"name, code, department_id, duration, program_type (trade/diploma/degree), intake_default, is_active. Description field for WTI Course Master card.",Not Started,Arnav,Critical,Phase 1,WTI Course Master; Precious links subjects later via program_id.
+Program/Course,Backend,CRUD /api/programs,Backend,coreRoutes.,Not Started,Arnav,Critical,Phase 1,
+Program/Course,Frontend,pages/settings/ProgramList/Form,Frontend,Course master UI matching WTI card description: trade/diploma courses.,Not Started,Arnav,High,Phase 1,
+Institution Settings,DB/UI,Institution profile + FY display settings,All,"Name, address, logo stub, default FY — TopBar context.",Not Started,Arnav,Medium,Phase 1,
+Shared Masters Hub,Frontend,pages/settings/SharedMastersHub.jsx,Frontend,"Card grid (WTI Masters style) linking Academic Year, Department, Program — 11-module visual language.",Not Started,Arnav,High,Phase 1,UI reference: /app/wti/masters.
+API contracts,Docs,Document GET list shapes for Precious consumers,Docs,"programs, departments, academic-years list DTOs in docs/contracts.md.",Not Started,Arnav,High,Phase 1,Precious blocked until these APIs stable.
+Seeds,DB,"Seed sample AY, Depts, Programs",DB,Enough data for Faculty/Academics development.,Not Started,Arnav,High,Phase 1,

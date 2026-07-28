@@ -1,0 +1,18 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+STEP ZERO — ROLES & PERMISSIONS (BEFORE FEATURE MODULES),,,,,Not Started,,,,
+RBAC,DB,models/Role.js,DB,"Seed roles: Super Admin, Institution Admin, Admission Officer, Faculty, Exam Controller, Accountant, Student (portal later).",Not Started,Arnav,Critical,Phase 0,
+RBAC,DB,models/Permission.js,DB,"module + action (view|create|edit|delete|approve). Modules: admissions, students, faculty, academics, lms, exams, fees, dashboard, users, settings.",Not Started,Arnav,Critical,Phase 0,
+RBAC,DB,models/RolePermission.js,DB,M2M role↔permission; drives dynamic left nav.,Not Started,Arnav,Critical,Phase 0,
+RBAC,DB,models/UserMenuOverride.js,DB,Per-user grant/deny overrides.,Not Started,Arnav,High,Phase 0,
+RBAC,DB,models/User.js,DB,"name, email, phone, password_hash, role_id, department_id?, is_active, linked_faculty_id?, linked_student_id?.",Not Started,Arnav,Critical,Phase 0,
+RBAC,Backend,middleware/requirePermission.js,Backend,"requirePermission(module, action); resolves RolePermission + overrides.",Not Started,Arnav,Critical,Phase 0,
+RBAC,Backend,GET /api/auth/me permissions payload,Backend,Returns permission set for Sidebar + route guards.,Not Started,Arnav,Critical,Phase 0,
+RBAC,Frontend,PermissionContext + usePermission + ProtectedRoute,Frontend,No scattered role=== checks; menu built from permissions.,Not Started,Arnav,Critical,Phase 0,
+USER MANAGEMENT,,,,,Not Started,,,,
+User Mgmt,Backend,CRUD /api/users,Backend,Create/edit/soft-deactivate; never hard-delete users with history.,Not Started,Arnav,Critical,Phase 0,
+User Mgmt,Backend,PUT /api/users/:id/permission-overrides,Backend,Admin toggles overrides.,Not Started,Arnav,High,Phase 1,
+User Mgmt,Frontend,pages/users/UserList.jsx + UserForm.jsx,Frontend,Admin-only user management screens inside shell.,Not Started,Arnav,High,Phase 1,
+User Mgmt,Frontend,pages/auth/Login.jsx,Frontend,Email + password; post-login redirect to Dashboard or first permitted module.,Not Started,Arnav,Critical,Phase 0,UI clean/professional — match ERP login simplicity.
+Nav,Seeds,Permission seeds for 7 left-nav modules,DB,"Ensure Admissions, Students, Faculty, Academics, LMS, Exams, Fees appear when permitted.",Not Started,Arnav,Critical,Phase 0,Precious requests new permission keys via seed PR owned by Arnav OR documents keys in contracts for Arnav to add.
+Nav,Config,"navConfig.js module metadata (icon, path, order)",Frontend,Single nav metadata file owned by Arnav; Precious only proposes new entries via PR note — Arnav merges nav keys.,Not Started,Arnav,Critical,Phase 0,Prevents Sidebar edit conflicts.
+Audit,Backend,Log permission & user changes,Backend,Write AuditLog on role/permission/user updates.,Not Started,Arnav,Medium,Phase 1,

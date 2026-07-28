@@ -1,0 +1,29 @@
+Sheet,Scope,Item Count,Primary Owner
+01 Architecture-Foundation,"MERN scaffold, WTI-style ERP shell, merge-safe routing, shared UI kit, seeds, audit log",20,Arnav (scaffold) + shared routing contract
+02 RBAC-Auth-Users,"Roles, permissions, login, user management, permission-driven left nav (7 modules)",15,Arnav
+03 Shared-Platform-Masters,"Academic Year, Departments, Programs/Courses, Institution settings (foundation both consume)",13,Arnav owns models/APIs; Precious consumes
+04 Admissions,Full admissions lifecycle: Masters + Transactions + Reports + AI OCR stub,23,Arnav
+05 Students,"Student lifecycle, hostel/transport, promotion, alumni",14,Arnav
+06 Faculty,"Faculty profiles, subject allocation, leave, performance",16,Precious
+07 Academics,"Curriculum, batches, timetable (AI-assist), attendance, internal assessments",16,Precious
+08 LMS,"Courses, content, assignments, quizzes, live class stub, progress",11,Precious
+09 Exams,"Scheduling, hall tickets, marks, results, transcripts, certificates",12,Precious
+10 Fees,"Fee structure, collection, receipts, scholarships, refunds, outstanding",17,Arnav
+11 Dashboard-Reports,Institution dashboard + cross-module MIS; module reports owned with parent module,10,Split — see sheet
+12 Phases-Acceptance,"Phase 0–3 milestones, UI parity checklist vs erp.smart-aiapps.com/app/wti, UAT",21,Both
+
+TOTAL TASKS,188
+
+MERGE-CONFLICT RULES
+"1. Arnav owns backend/routes/coreRoutes.js + frontend/src/routes/coreRoutes.jsx (Admissions, Students, Fees, Dashboard, Auth, Users, Shared Masters). Precious owns academicRoutes equivalents (Faculty, Academics, LMS, Exams). index only imports both aggregators."
+2. Never edit the other dev's route aggregator; register new routes only in your own file (coreRoutes vs academicRoutes).
+"3. Arnav owns Layout.jsx, Sidebar.jsx, TopBar.jsx, theme tokens (Celeris/WTI look). Precious MUST NOT edit shell — add menu items via permission seeds + nav config keys only."
+"4. Shared components have a single owner (Notes column). Import — do not duplicate DataTable, PageHeader, MasterCardGrid, StatusBadge, etc."
+"5. Shared foundation masters (AcademicYear, Department, Program/Course) = Arnav. Precious consumes via API only — never edit those model files."
+6. Student model + enrollment APIs = Arnav. Faculty/Academics/LMS/Exams read Student via API; do not fork Student schema.
+7. Subject Master + Semester + Classroom + Batch = Precious (Academics). Admissions maps Program only; subject-level work stays with Precious.
+8. Fee Structure / collection / receipt = Arnav. Admissions fee-payment confirmation calls Fees APIs owned by Arnav.
+9. Phase 0 scaffold + shell + RBAC merged by Arnav before Precious starts feature branches.
+"10. Cross-module contracts (admission→student enrollment, fee.paid, exam.resultPublished, semester.promote) documented in docs/contracts.md — agree before coding."
+"11. UI parity: match Celeris ERP WTI patterns — left module nav, module tabs Dashboard|Masters|Transactions|Reports, master card grid, blue banner module header. Reference: https://erp.smart-aiapps.com/app/wti/"
+12. Folder ownership: frontend/src/pages/admissions|students|fees|dashboard + api/core/ = Arnav. pages/faculty|academics|lms|exams + api/academic/ = Precious.

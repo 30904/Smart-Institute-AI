@@ -1,0 +1,17 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+MODULE SHELL — EXAMS,,,,,Not Started,,,,
+Exams,Frontend,Exams ModuleShell + Masters cards,Frontend,"Exam Types, Grading Scheme, Passing Rules, Evaluation Rules, Result Templates.",Not Started,Precious,Critical,Phase 2,
+MASTERS,,,,,Not Started,,,,
+Exam masters,DB,"ExamType, GradingScheme, PassingRule, EvaluationRule, ResultTemplate",DB,Config per functional spec.,Not Started,Precious,Critical,Phase 2,
+Exam masters,Backend/UI,CRUD + pages,All,pages/exams/masters/*.,Not Started,Precious,Critical,Phase 2,
+TRANSACTIONS,,,,,Not Started,,,,
+Schedule,DB/API/UI,Exam scheduling,All,"Dates, subjects, rules; publish to students.",Not Started,Precious,Critical,Phase 2,
+Hall ticket,Backend/UI,Hall ticket generation,All,Eligible students; PDF/print stub; center/seating info.,Not Started,Precious,Critical,Phase 2,
+Seating,Backend/UI,Seating arrangement,All,Allocate seats/rooms for exam sessions.,Not Started,Precious,High,Phase 2,
+Marks,Backend/UI,Theory + practical mark entry,All,Faculty/evaluator entry; lock after submit.,Not Started,Precious,Critical,Phase 2,
+Results,Backend,Result processing vs grading/passing rules,Backend,Compute grades; backlog flags.,Not Started,Precious,Critical,Phase 2,
+Publish,Backend/UI,Publish results + notify student record,All,Emit result.published for Students/Academics promotion consumers.,Not Started,Precious,Critical,Phase 2,Contract for Arnav promotion.
+Revaluation,Backend/UI,Revaluation workflow,All,Request → re-enter marks → revise result.,Not Started,Precious,Medium,Phase 3,
+Transcript/Certificate,Backend/UI,Transcript + certificate generation,All,PDF stubs; store documents on student via API or local exam docs table referencing student_id.,Not Started,Precious,High,Phase 2,Client: certification and examination management.
+REPORTS,,,,,Not Started,,,,
+Reports,All,"Result Analysis, Grade Distribution, Pass %, Subject Analysis, Topper, Backlog",All,pages/exams/reports/*.,Not Started,Precious,High,Phase 2,

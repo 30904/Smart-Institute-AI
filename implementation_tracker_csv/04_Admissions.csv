@@ -1,0 +1,28 @@
+Section,Sub-Section,Item / Task,Layer,Detail / Expected Result,Status,Assigned Dev,Priority,Sprint / Phase,Notes
+MODULE SHELL — ADMISSIONS,,,,,Not Started,,,,
+Admissions,Frontend,Admissions module routes + ModuleShell tabs,Frontend,Dashboard | Masters | Transactions | Reports under /admissions/* — same pattern as WTI.,Not Started,Arnav,Critical,Phase 1,
+Admissions,Frontend,Admissions Masters card grid,Frontend,"Cards for: Academic Year (link), Admission Cycle, Programs, Departments (link), Intake, Categories, Eligibility, Document Checklist, Fee Mapping, Scholarship Rules, Statuses.",Not Started,Arnav,Critical,Phase 1,Visual parity with WTI masters cards.
+MASTERS,,,,,Not Started,,,,
+Admission Cycle,DB,models/AdmissionCycle.js,DB,"academic_year_id, name, start_date, end_date, status (draft|open|closed).",Not Started,Arnav,Critical,Phase 1,
+Intake Capacity,DB,models/IntakeCapacity.js,DB,"cycle_id, program_id, category_id?, seats.",Not Started,Arnav,Critical,Phase 1,
+Admission Category,DB,models/AdmissionCategory.js,DB,"name, code, quota_percent?, is_active.",Not Started,Arnav,Critical,Phase 1,
+Eligibility,DB,models/EligibilityCriteria.js,DB,"program_id, min_qualification, min_marks, rules_json.",Not Started,Arnav,High,Phase 1,
+Document Checklist,DB,models/AdmissionDocumentType.js,DB,"name, mandatory, applies_to_program_ids[].",Not Started,Arnav,High,Phase 1,
+Fee Structure Mapping,DB,Admission↔FeeStructure link fields,DB,Map program + cycle to fee_structure_id (Fees module).,Not Started,Arnav,Critical,Phase 1,Coordinates with Fees masters owned by Arnav.
+Scholarship Rules,DB,models/ScholarshipRule.js (admission-facing),DB,"name, criteria_json, benefit_json; shared with Fees adjustments.",Not Started,Arnav,High,Phase 1,
+Admission Status,DB,Status enum/master,DB,"Applied, Docs Pending, Eligible, Merit Listed, Allotted, Approved, Fee Pending, Enrolled, Rejected, Waitlisted.",Not Started,Arnav,Critical,Phase 1,
+Masters,Backend/UI,CRUD APIs + list/form pages for all admission masters,All,"Each master: model, routes in coreRoutes, List+Form pages under pages/admissions/masters/.",Not Started,Arnav,Critical,Phase 1,
+TRANSACTIONS,,,,,Not Started,,,,
+Application,DB,models/AdmissionApplication.js,DB,"personal, academic, program_preferences[], category_id, cycle_id, status, merit_score?.",Not Started,Arnav,Critical,Phase 1,
+Application,Backend,POST/GET/PUT /api/admissions/applications,Backend,Register application; list/filter by cycle/status.,Not Started,Arnav,Critical,Phase 1,
+Documents,Backend,Document upload + verification endpoints,Backend,Upload files; verify/reject checklist items; AI OCR stub hook for authenticity/completeness.,Not Started,Arnav,High,Phase 1,AI: OCR stub — flag Phase 2 for real OCR.
+Eligibility,Backend,Eligibility validation service,Backend,Validate applicant vs program criteria; set Eligible/Ineligible.,Not Started,Arnav,Critical,Phase 1,
+Merit,Backend,Merit list generation,Backend,Rank by merit_score + category quotas; generate MeritList records.,Not Started,Arnav,Critical,Phase 1,
+Counseling,Backend,Seat allocation / counseling,Backend,Allot seats against IntakeCapacity; waitlist overflow.,Not Started,Arnav,Critical,Phase 1,
+Approval,Backend,Admission approval action,Backend,Committee approve/reject allotted seat; audit log.,Not Started,Arnav,Critical,Phase 1,
+Fee confirm,Backend,Fee payment confirmation → enrollment trigger,Backend,"On fee.paid (Fees API), convert applicant → Student; generate roll_no + student_id.",Not Started,Arnav,Critical,Phase 1,Contract: admission.enrolled.
+Enrollment,Backend,Student enrollment service,Backend,Create Student from application; no re-entry of personal data.,Not Started,Arnav,Critical,Phase 1,
+Transactions UI,Frontend,"Application list, detail, verify, allot, approve screens",Frontend,pages/admissions/transactions/* workflow screens.,Not Started,Arnav,Critical,Phase 1,
+REPORTS,,,,,Not Started,,,,
+Reports,Backend/UI,"Admission Summary, Application Status, Seat Availability, Pending, Merit List, Conversion",All,Filter by cycle/program; export CSV; charts where useful.,Not Started,Arnav,High,Phase 2,Maps client: Student admission reports.
+Dashboard,Frontend,Admissions mini-dashboard widgets,Frontend,"Applications today, pending verify, seats left, conversion %.",Not Started,Arnav,Medium,Phase 2,
