@@ -17,6 +17,39 @@ Implementation tasks and ownership are tracked in `Smart_Institute_AI_Implementa
 
 ---
 
+## Git repository
+
+**Remote:** [github.com/celerisventures/Smart_Institution_ERP](https://github.com/celerisventures/Smart_Institution_ERP)
+
+| Branch | Purpose |
+|--------|---------|
+| `main` | Stable / merged code (default) |
+| `dev-arnav` | Arnav's working branch (`coreRoutes` modules) |
+| `dev-precious` | Precious's working branch (`academicRoutes` modules) |
+
+### Clone and pick your branch
+
+```bash
+git clone https://github.com/celerisventures/Smart_Institution_ERP.git
+cd Smart_Institution_ERP
+
+# Arnav
+git checkout dev-arnav
+
+# Precious
+git checkout dev-precious
+```
+
+### Workflow
+
+1. Do daily work on **your own dev branch** (`dev-arnav` or `dev-precious`).
+2. Pull latest `main` regularly and merge/rebase into your branch to stay in sync.
+3. Open a **Pull Request → `main`** when a tracker phase or feature slice is ready.
+4. Do **not** push directly to `main` unless Heramb agrees.
+5. Never edit the other dev's route aggregator (`coreRoutes` vs `academicRoutes`).
+
+---
+
 ## Database setup
 
 ### Local MongoDB (use this for now)
