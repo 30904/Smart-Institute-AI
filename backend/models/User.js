@@ -14,13 +14,35 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true
     },
+    phone: {
+      type: String,
+      default: "",
+      trim: true
+    },
     password_hash: {
       type: String,
       required: true
     },
+    role_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+      default: null
+    },
+    department_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      default: null
+    },
+    linked_faculty_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      default: null
+    },
+    linked_student_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      default: null
+    },
     role: {
       type: String,
-      default: "admin"
+      default: ""
     },
     permissions: {
       type: [String],

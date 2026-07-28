@@ -10,13 +10,13 @@ const SharedMastersPage = lazy(() => import("@/pages/settings/SharedMastersPage"
 
 const coreRoutes = [
   { path: "/login", element: LoginPage },
-  { path: "/", element: DashboardPage },
-  { path: "/dashboard", element: DashboardPage },
-  { path: "/admissions", element: AdmissionsPage },
-  { path: "/students", element: StudentsPage },
-  { path: "/fees", element: FeesPage },
-  { path: "/users", element: UsersPage },
-  { path: "/settings/shared-masters", element: SharedMastersPage }
+  { path: "/", element: DashboardPage, moduleName: "dashboard", action: "view" },
+  { path: "/dashboard", element: DashboardPage, moduleName: "dashboard", action: "view" },
+  { path: "/admissions", element: AdmissionsPage, moduleName: "admissions", action: "view" },
+  { path: "/students", element: StudentsPage, moduleName: "students", action: "view" },
+  { path: "/fees", element: FeesPage, moduleName: "fees", action: "view" },
+  { path: "/users", element: UsersPage, moduleName: "users", action: "view" },
+  { path: "/settings/shared-masters", element: SharedMastersPage, moduleName: "settings", action: "view" }
 ];
 
 export default coreRoutes;

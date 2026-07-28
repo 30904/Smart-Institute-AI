@@ -14,11 +14,15 @@ async function login(req, res, next) {
   }
 }
 
-function me(req, res) {
-  sendSuccess(res, {
-    data: toMePayload(req.user),
-    message: "Authenticated user fetched."
-  });
+async function me(req, res, next) {
+  try {
+    sendSuccess(res, {
+      data: await toMePayload(req.user),
+      message: "Authenticated user fetched."
+    });
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = { login, me };
