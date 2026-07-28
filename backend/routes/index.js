@@ -1,11 +1,11 @@
 const express = require("express");
 
-const healthRoutes = require("./healthRoutes");
-const authRoutes = require("./authRoutes");
+const coreRoutes = require("./coreRoutes");
+const academicRoutes = require("./academicRoutes");
 
 const router = express.Router();
 
-router.use("/", healthRoutes);
-router.use("/auth", authRoutes);
+router.use("/", coreRoutes);
+router.use("/academic", academicRoutes);
 
 module.exports = router;

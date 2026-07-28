@@ -1,7 +1,6 @@
 function getHealthPayload() {
   return {
-    success: true,
-    message: "Backend scaffold is running."
+    status: "UP"
   };
 }
 

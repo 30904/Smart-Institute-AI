@@ -2,6 +2,7 @@ const { loadEnv } = require("./config/env");
 const { connectDb } = require("./config/db");
 const app = require("./app");
 const { ensureDefaultAdmin } = require("./services/authService");
+const { ensureDefaultInstitution } = require("./services/institutionService");
 
 loadEnv();
 
@@ -11,6 +12,7 @@ async function startServer() {
   try {
     await connectDb();
     await ensureDefaultAdmin();
+    await ensureDefaultInstitution();
     app.listen(port, () => {
       console.log(`Backend running on port ${port}`);
     });

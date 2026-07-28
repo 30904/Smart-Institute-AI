@@ -1,7 +1,11 @@
 const { getHealthPayload } = require("../services/healthService");
+const { sendSuccess } = require("../utils/response");
 
 function getHealth(_req, res) {
-  res.json(getHealthPayload());
+  sendSuccess(res, {
+    data: getHealthPayload(),
+    message: "Backend scaffold is running."
+  });
 }
 
 module.exports = { getHealth };

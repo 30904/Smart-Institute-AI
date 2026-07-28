@@ -1,11 +1,11 @@
 const { loginWithEmailPassword, toMePayload } = require("../services/authService");
+const { sendSuccess } = require("../utils/response");
 
 async function login(req, res, next) {
   try {
     const { email, password } = req.body;
     const data = await loginWithEmailPassword(email, password);
-    res.json({
-      success: true,
+    sendSuccess(res, {
       data,
       message: "Login successful."
     });
@@ -15,8 +15,7 @@ async function login(req, res, next) {
 }
 
 function me(req, res) {
-  res.json({
-    success: true,
+  sendSuccess(res, {
     data: toMePayload(req.user),
     message: "Authenticated user fetched."
   });
