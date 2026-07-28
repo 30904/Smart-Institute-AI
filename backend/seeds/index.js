@@ -23,6 +23,7 @@ const ROLE_SEEDS = [
 
 const MODULES = ["admissions", "students", "faculty", "academics", "lms", "exams", "fees", "dashboard", "users", "settings"];
 const ACTIONS = ["view", "create", "edit", "delete", "approve"];
+const LEFT_NAV_MODULES = ["admissions", "students", "faculty", "academics", "lms", "exams", "fees"];
 const NAV_MODULES = ["admissions", "students", "faculty", "academics", "lms", "exams", "fees", "dashboard"];
 const ALL_ACTIONS = ["view", "create", "edit", "delete", "approve"];
 
@@ -38,6 +39,13 @@ async function seedPermissions() {
       const key = `${moduleName}.${action}`;
       await Permission.updateOne({ key }, { $set: { module: moduleName, action, key } }, { upsert: true });
     }
+  }
+}
+
+async function seedLeftNavPermissions() {
+  for (const moduleName of LEFT_NAV_MODULES) {
+    const key = `${moduleName}.view`;
+    await Permission.updateOne({ key }, { $set: { module: moduleName, action: "view", key } }, { upsert: true });
   }
 }
 
@@ -190,6 +198,7 @@ async function runSeeds() {
 
   await seedRoles();
   await seedPermissions();
+  await seedLeftNavPermissions();
   await seedRolePermissions();
   await seedInstitution();
   await seedAcademicYear();
