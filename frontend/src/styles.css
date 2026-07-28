@@ -302,12 +302,54 @@ body {
   gap: 0.9rem;
 }
 
-.ui-master-card {
+.ui-master-card,
+.ui-master-card-link {
   border: 1px solid #dbe3ef;
   border-top: 3px solid #93c5fd;
   border-radius: 10px;
   background: #ffffff;
   padding: 0.95rem;
+}
+
+.ui-master-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.ui-master-card-link:hover,
+.ui-master-card-link:focus-visible {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
+  border-color: #bfdbfe;
+}
+
+.ui-master-card-accent-blue {
+  border-top-color: #60a5fa;
+}
+
+.ui-master-card-accent-blue .ui-master-card-icon {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.ui-master-card-accent-emerald {
+  border-top-color: #34d399;
+}
+
+.ui-master-card-accent-emerald .ui-master-card-icon {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.ui-master-card-accent-violet {
+  border-top-color: #a78bfa;
+}
+
+.ui-master-card-accent-violet .ui-master-card-icon {
+  background: #f5f3ff;
+  color: #6d28d9;
 }
 
 .ui-master-card h4 {
@@ -397,11 +439,17 @@ body {
 }
 
 .ui-form-grid input,
-.ui-form-grid select {
+.ui-form-grid select,
+.ui-form-grid textarea {
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   padding: 0.55rem 0.7rem;
   font-size: 0.92rem;
+}
+
+.ui-form-grid textarea {
+  resize: vertical;
+  min-height: 84px;
 }
 
 .ui-form-actions {

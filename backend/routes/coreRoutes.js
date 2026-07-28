@@ -4,6 +4,9 @@ const healthRoutes = require("./healthRoutes");
 const authRoutes = require("./authRoutes");
 const institutionRoutes = require("./institutionRoutes");
 const userRoutes = require("./userRoutes");
+const academicYearRoutes = require("./academicYearRoutes");
+const departmentRoutes = require("./departmentRoutes");
+const programRoutes = require("./programRoutes");
 
 const router = express.Router();
 
@@ -11,5 +14,8 @@ router.use("/", healthRoutes);
 router.use("/auth", authRoutes);
 router.use("/institution", institutionRoutes);
 router.use("/users", userRoutes);
+router.use("/academic-years", academicYearRoutes);
+router.use("/departments", departmentRoutes);
+router.use("/programs", programRoutes);
 
 module.exports = router;

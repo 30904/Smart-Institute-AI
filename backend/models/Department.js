@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const academicYearSchema = new mongoose.Schema(
+const departmentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -13,17 +13,10 @@ const academicYearSchema = new mongoose.Schema(
       unique: true,
       trim: true
     },
-    start_date: {
-      type: Date,
-      required: true
-    },
-    end_date: {
-      type: Date,
-      required: true
-    },
-    is_current: {
-      type: Boolean,
-      default: false
+    head_user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null
     },
     is_active: {
       type: Boolean,
@@ -35,4 +28,4 @@ const academicYearSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("AcademicYear", academicYearSchema);
+module.exports = mongoose.model("Department", departmentSchema);

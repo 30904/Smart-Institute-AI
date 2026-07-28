@@ -22,6 +22,21 @@ const institutionSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    address: {
+      type: String,
+      default: "",
+      trim: true
+    },
+    logo_url: {
+      type: String,
+      default: "",
+      trim: true
+    },
+    default_academic_year_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AcademicYear",
+      default: null
+    },
     isActive: {
       type: Boolean,
       default: true
