@@ -1,0 +1,11 @@
+{
+  "name": "smart-institute-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Smart Institute AI monorepo scaffold",
+  "scripts": {
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev": "npm run dev:backend"
+  }
+}
