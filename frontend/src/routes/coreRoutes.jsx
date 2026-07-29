@@ -3,6 +3,7 @@ import { lazy } from "react";
 const LoginPage = lazy(() => import("@/pages/auth/LoginPage"));
 const DashboardPage = lazy(() => import("@/pages/dashboard/DashboardPage"));
 const AdmissionsPage = lazy(() => import("@/pages/admissions/AdmissionsPage"));
+const AdmissionsMastersPage = lazy(() => import("@/pages/admissions/AdmissionsMastersPage"));
 const StudentsPage = lazy(() => import("@/pages/students/StudentsPage"));
 const FeesPage = lazy(() => import("@/pages/fees/FeesPage"));
 const UsersPage = lazy(() => import("@/pages/users/UsersPage"));
@@ -18,7 +19,7 @@ const coreRoutes = [
   { path: "/dashboard", element: DashboardPage, moduleName: "dashboard", action: "view" },
   { path: "/admissions", element: AdmissionsPage, moduleName: "admissions", action: "view" },
   { path: "/admissions/dashboard", element: AdmissionsPage, moduleName: "admissions", action: "view" },
-  { path: "/admissions/masters", element: AdmissionsPage, moduleName: "admissions", action: "view" },
+  { path: "/admissions/masters", element: AdmissionsMastersPage, moduleName: "admissions", action: "view" },
   { path: "/admissions/transactions", element: AdmissionsPage, moduleName: "admissions", action: "view" },
   { path: "/admissions/reports", element: AdmissionsPage, moduleName: "admissions", action: "view" },
   { path: "/students", element: StudentsPage, moduleName: "students", action: "view" },
