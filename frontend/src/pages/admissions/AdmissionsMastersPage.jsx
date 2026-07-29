@@ -14,6 +14,7 @@ const admissionMasterCards = [
     key: "admission-cycle",
     title: "Admission Cycle",
     description: "Configure application windows and their draft, open, or closed status.",
+    to: "/admissions/masters/admission-cycles",
     icon: "AC",
     accentClass: "ui-master-card-accent-emerald"
   },
@@ -37,6 +38,7 @@ const admissionMasterCards = [
     key: "intake-capacity",
     title: "Intake Capacity",
     description: "Define available seats by admission cycle, program, and category.",
+    to: "/admissions/masters/intake-capacities",
     icon: "IN",
     accentClass: "ui-master-card-accent-emerald"
   },
@@ -44,6 +46,7 @@ const admissionMasterCards = [
     key: "categories",
     title: "Admission Categories",
     description: "Configure admission categories, codes, and quota percentages.",
+    to: "/admissions/masters/categories",
     icon: "CT",
     accentClass: "ui-master-card-accent-violet"
   },
@@ -51,6 +54,7 @@ const admissionMasterCards = [
     key: "eligibility",
     title: "Eligibility Criteria",
     description: "Set program qualifications, minimum marks, and validation rules.",
+    to: "/admissions/masters/eligibility-criteria",
     icon: "EL",
     accentClass: "ui-master-card-accent-blue"
   },
@@ -58,6 +62,7 @@ const admissionMasterCards = [
     key: "document-checklist",
     title: "Document Checklist",
     description: "Define mandatory documents and program-specific requirements.",
+    to: "/admissions/masters/document-types",
     icon: "DC",
     accentClass: "ui-master-card-accent-emerald"
   },
@@ -65,6 +70,7 @@ const admissionMasterCards = [
     key: "fee-mapping",
     title: "Fee Mapping",
     description: "Map programs and admission cycles to the applicable fee structure.",
+    to: "/admissions/masters/fee-mappings",
     icon: "FM",
     accentClass: "ui-master-card-accent-violet"
   },
@@ -72,6 +78,7 @@ const admissionMasterCards = [
     key: "scholarship-rules",
     title: "Scholarship Rules",
     description: "Configure admission-facing eligibility and benefit rules.",
+    to: "/admissions/masters/scholarship-rules",
     icon: "SR",
     accentClass: "ui-master-card-accent-blue"
   },
@@ -79,6 +86,7 @@ const admissionMasterCards = [
     key: "statuses",
     title: "Admission Statuses",
     description: "Review the controlled statuses used throughout the admission workflow.",
+    to: "/admissions/masters/statuses",
     icon: "ST",
     accentClass: "ui-master-card-accent-emerald"
   }
