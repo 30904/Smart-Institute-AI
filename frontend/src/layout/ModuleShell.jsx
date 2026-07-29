@@ -2,17 +2,17 @@ import PropTypes from "prop-types";
 
 const tabs = ["Dashboard", "Masters", "Transactions", "Reports"];
 
-function ModuleShell({ title, subtitle, activeTab = "Dashboard", children }) {
+function ModuleShell({ title, activeTab = "Dashboard", onTabChange, children }) {
   return (
     <main className="app-shell">
-      <header className="module-shell-header">
-        <h2>{title}</h2>
-        <p>{subtitle}</p>
-      </header>
-
       <nav className="module-tabs" aria-label={`${title} tabs`}>
         {tabs.map((tab) => (
-          <button key={tab} type="button" className={`module-tab ${tab === activeTab ? "active" : ""}`}>
+          <button
+            key={tab}
+            type="button"
+            className={`module-tab ${tab === activeTab ? "active" : ""}`}
+            onClick={() => onTabChange?.(tab)}
+          >
             {tab}
           </button>
         ))}
@@ -25,8 +25,8 @@ function ModuleShell({ title, subtitle, activeTab = "Dashboard", children }) {
 
 ModuleShell.propTypes = {
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
   activeTab: PropTypes.oneOf(tabs),
+  onTabChange: PropTypes.func,
   children: PropTypes.node.isRequired
 };
 
