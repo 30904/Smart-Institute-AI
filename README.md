@@ -81,7 +81,8 @@ Seeds create:
 
 - Admin user and default login credentials (documented in seed output / `.env.example`)
 - Roles and permissions (RBAC)
-- Sample institution, academic year, departments, and programs
+- Sample institution, academic years, departments, and programs
+- Sample admissions masters (cycles, categories, intake, eligibility, documents, fee mappings, scholarships, statuses)
 
 Precious should run seeds locally after clone so she has the same baseline data as Arnav.
 
