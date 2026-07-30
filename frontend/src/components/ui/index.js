@@ -1,3 +1,4 @@
+export { default as ActionsMenu } from "./ActionsMenu";
 export { default as DataTable } from "./DataTable";
 export { default as FormDrawer } from "./FormDrawer";
 export { default as MasterCardGrid } from "./MasterCardGrid";

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useMemo, useState } from "react";
 
-import { DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
+import { ActionsMenu, DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
 import DepartmentForm from "@/pages/settings/DepartmentForm";
 
 function DepartmentList({ rows, loading, canCreate, canEdit, onCreate, onUpdate }) {
@@ -44,12 +44,21 @@ function DepartmentList({ rows, loading, canCreate, canEdit, onCreate, onUpdate 
     code: row.code,
     head: row.head_user_id || "-",
     status: row.is_active ? <StatusBadge label="Active" tone="success" /> : <StatusBadge label="Inactive" tone="warning" />,
-    actions: canEdit ? (
-      <button type="button" className="btn-link" onClick={() => { setSelectedRow(row); setDrawerOpen(true); }}>
-        Edit
-      </button>
-    ) : (
-      <span>-</span>
+    actions: (
+      <ActionsMenu
+        ariaLabel={`Actions for ${row.name}`}
+        items={[
+          {
+            key: "edit",
+            label: "Edit",
+            hidden: !canEdit,
+            onClick: () => {
+              setSelectedRow(row);
+              setDrawerOpen(true);
+            }
+          }
+        ]}
+      />
     )
   }));
 

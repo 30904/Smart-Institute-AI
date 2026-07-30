@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useMemo, useState } from "react";
 
-import { DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
+import { ActionsMenu, DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
 import AdmissionMasterForm from "@/pages/admissions/masters/AdmissionMasterForm";
 
 function getOptionLabel(field, value, optionSets) {
@@ -50,42 +50,37 @@ function AdmissionMasterList({ config, rows, optionSets, loading, canCreate, can
     config.columns.forEach((key) => {
       formatted[key] = formatValue(fieldsByName.get(key) || {}, row[key], optionSets);
     });
-    formatted.actions =
-      canEdit || canDelete ? (
-        <div className="ui-inline-actions">
-          {canEdit ? (
-            <button
-              type="button"
-              className="btn-link"
-              onClick={() => {
-                setSelectedRow(row);
-                setDrawerOpen(true);
-              }}
-            >
-              Edit
-            </button>
-          ) : null}
-          {canDelete ? (
-            <button
-              type="button"
-              className="btn-link danger"
-              onClick={async () => {
-                if (!window.confirm(`Delete this ${config.title.toLowerCase()}?`)) return;
-                try {
-                  setError("");
-                  await onDelete(row.id);
-                } catch (apiError) {
-                  setError(apiError?.response?.data?.message || `Failed to delete ${config.title.toLowerCase()}.`);
-                }
-              }}
-            >
-              Delete
-            </button>
-          ) : null}
-        </div>
-      ) : (
-        "-"
-      );
+    formatted.actions = (
+      <ActionsMenu
+        ariaLabel={`Actions for ${config.title.toLowerCase()}`}
+        items={[
+          {
+            key: "edit",
+            label: "Edit",
+            hidden: !canEdit,
+            onClick: () => {
+              setSelectedRow(row);
+              setDrawerOpen(true);
+            }
+          },
+          {
+            key: "delete",
+            label: "Delete",
+            tone: "danger",
+            hidden: !canDelete,
+            onClick: async () => {
+              if (!window.confirm(`Delete this ${config.title.toLowerCase()}?`)) return;
+              try {
+                setError("");
+                await onDelete(row.id);
+              } catch (apiError) {
+                setError(apiError?.response?.data?.message || `Failed to delete ${config.title.toLowerCase()}.`);
+              }
+            }
+          }
+        ]}
+      />
+    );
     return formatted;
   });
 

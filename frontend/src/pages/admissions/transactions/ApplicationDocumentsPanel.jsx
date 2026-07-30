@@ -7,7 +7,7 @@ import {
   uploadApplicationDocument,
   verifyApplicationDocument
 } from "@/api/core";
-import { DataTable, StatusBadge } from "@/components/ui";
+import { ActionsMenu, DataTable, StatusBadge } from "@/components/ui";
 
 function ApplicationDocumentsPanel({ applicationId, documentTypes, canCreate, canEdit }) {
   const [documents, setDocuments] = useState([]);
@@ -58,48 +58,50 @@ function ApplicationDocumentsPanel({ applicationId, documentTypes, canCreate, ca
     ),
     ocr: document.ocr?.phase === "phase_2_stub" ? "Phase 2 stub" : "-",
     remarks: document.verification_remarks || "-",
-    actions: canEdit && document.verification_status === "pending" ? (
-      <div className="ui-inline-actions">
-        <button
-          type="button"
-          className="btn-link"
-          onClick={async () => {
-            try {
-              setBusy(true);
-              await verifyApplicationDocument(applicationId, document.id);
-              await loadDocuments();
-            } catch (apiError) {
-              setError(apiError?.response?.data?.message || "Failed to verify document.");
-            } finally {
-              setBusy(false);
+    actions: (
+      <ActionsMenu
+        ariaLabel={`Actions for ${document.original_name}`}
+        items={[
+          {
+            key: "verify",
+            label: "Verify",
+            hidden: !(canEdit && document.verification_status === "pending"),
+            disabled: busy,
+            onClick: async () => {
+              try {
+                setBusy(true);
+                await verifyApplicationDocument(applicationId, document.id);
+                await loadDocuments();
+              } catch (apiError) {
+                setError(apiError?.response?.data?.message || "Failed to verify document.");
+              } finally {
+                setBusy(false);
+              }
             }
-          }}
-          disabled={busy}
-        >
-          Verify
-        </button>
-        <button
-          type="button"
-          className="btn-link danger"
-          onClick={async () => {
-            const remarks = window.prompt("Enter rejection reason:");
-            if (!remarks) return;
-            try {
-              setBusy(true);
-              await rejectApplicationDocument(applicationId, document.id, remarks);
-              await loadDocuments();
-            } catch (apiError) {
-              setError(apiError?.response?.data?.message || "Failed to reject document.");
-            } finally {
-              setBusy(false);
+          },
+          {
+            key: "reject",
+            label: "Reject",
+            tone: "danger",
+            hidden: !(canEdit && document.verification_status === "pending"),
+            disabled: busy,
+            onClick: async () => {
+              const remarks = window.prompt("Enter rejection reason:");
+              if (!remarks) return;
+              try {
+                setBusy(true);
+                await rejectApplicationDocument(applicationId, document.id, remarks);
+                await loadDocuments();
+              } catch (apiError) {
+                setError(apiError?.response?.data?.message || "Failed to reject document.");
+              } finally {
+                setBusy(false);
+              }
             }
-          }}
-          disabled={busy}
-        >
-          Reject
-        </button>
-      </div>
-    ) : "-"
+          }
+        ]}
+      />
+    )
   }));
 
   return (

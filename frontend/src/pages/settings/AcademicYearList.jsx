@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
-import { DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
+import { ActionsMenu, DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
 import AcademicYearForm from "@/pages/settings/AcademicYearForm";
 
 function formatDate(value) {
@@ -64,20 +64,23 @@ function AcademicYearList({ rows, loading, canCreate, canEdit, onCreate, onUpdat
     status: row.is_current ? <StatusBadge label="Current" tone="info" /> : <StatusBadge label="Standard" tone="neutral" />,
     active: row.is_active ? <StatusBadge label="Active" tone="success" /> : <StatusBadge label="Inactive" tone="warning" />,
     actions: (
-      <div className="ui-inline-actions">
-        {canEdit ? (
-          <button type="button" className="btn-link" onClick={() => openEdit(row)}>
-            Edit
-          </button>
-        ) : (
-          <span>-</span>
-        )}
-        {canEdit && !row.is_current ? (
-          <button type="button" className="btn-link" onClick={() => onSetCurrent(row.id)}>
-            Set Current
-          </button>
-        ) : null}
-      </div>
+      <ActionsMenu
+        ariaLabel={`Actions for ${row.name}`}
+        items={[
+          {
+            key: "edit",
+            label: "Edit",
+            hidden: !canEdit,
+            onClick: () => openEdit(row)
+          },
+          {
+            key: "set-current",
+            label: "Set Current",
+            hidden: !(canEdit && !row.is_current),
+            onClick: () => onSetCurrent(row.id)
+          }
+        ]}
+      />
     )
   }));
 

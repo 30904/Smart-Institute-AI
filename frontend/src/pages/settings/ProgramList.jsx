@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useMemo, useState } from "react";
 
-import { DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
+import { ActionsMenu, DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
 import ProgramForm from "@/pages/settings/ProgramForm";
 
 function ProgramList({ rows, loading, departments, canCreate, canEdit, onCreate, onUpdate }) {
@@ -51,19 +51,21 @@ function ProgramList({ rows, loading, departments, canCreate, canEdit, onCreate,
     duration: `${row.duration} yr`,
     intake: row.intake_default,
     status: row.is_active ? <StatusBadge label="Active" tone="success" /> : <StatusBadge label="Inactive" tone="warning" />,
-    actions: canEdit ? (
-      <button
-        type="button"
-        className="btn-link"
-        onClick={() => {
-          setSelectedRow(row);
-          setDrawerOpen(true);
-        }}
-      >
-        Edit
-      </button>
-    ) : (
-      <span>-</span>
+    actions: (
+      <ActionsMenu
+        ariaLabel={`Actions for ${row.name}`}
+        items={[
+          {
+            key: "edit",
+            label: "Edit",
+            hidden: !canEdit,
+            onClick: () => {
+              setSelectedRow(row);
+              setDrawerOpen(true);
+            }
+          }
+        ]}
+      />
     )
   }));
 

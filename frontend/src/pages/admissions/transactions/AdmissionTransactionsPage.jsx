@@ -7,7 +7,7 @@ import {
   fetchAdmissionMasterOptions,
   updateAdmissionApplication
 } from "@/api/core";
-import { DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
+import { ActionsMenu, DataTable, FormDrawer, PageHeader, StatusBadge } from "@/components/ui";
 import usePermission from "@/hooks/usePermission";
 import ModuleShell from "@/layout/ModuleShell";
 import ApplicationForm from "@/pages/admissions/transactions/ApplicationForm";
@@ -104,12 +104,25 @@ function AdmissionTransactionsPage() {
     merit: row.merit_score ?? "-",
     created: row.createdAt ? new Date(row.createdAt).toLocaleDateString() : "-",
     actions: (
-      <div className="ui-inline-actions">
-        <button type="button" className="btn-link" onClick={() => navigate(`/admissions/transactions/${row.id}`)}>View</button>
-        {canEdit ? (
-          <button type="button" className="btn-link" onClick={() => { setSelectedRow(row); setDrawerOpen(true); }}>Edit</button>
-        ) : null}
-      </div>
+      <ActionsMenu
+        ariaLabel={`Actions for ${row.personal?.full_name || "application"}`}
+        items={[
+          {
+            key: "view",
+            label: "View",
+            onClick: () => navigate(`/admissions/transactions/${row.id}`)
+          },
+          {
+            key: "edit",
+            label: "Edit",
+            hidden: !canEdit,
+            onClick: () => {
+              setSelectedRow(row);
+              setDrawerOpen(true);
+            }
+          }
+        ]}
+      />
     )
   }));
 
