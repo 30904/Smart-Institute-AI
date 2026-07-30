@@ -83,6 +83,9 @@ Seeds create:
 - Roles and permissions (RBAC)
 - Sample institution, academic years, departments, and programs
 - Sample admissions masters (cycles, categories, intake, eligibility, documents, fee mappings, scholarships, statuses)
+- Demo admission transactions (applications across every workflow status, uploaded documents, merit lists, seat allocations, fee confirmations, enrolled students) so Transactions, Reports, and Dashboard render with data
+
+Demo applicants use the `@demo.smartinstitute.test` email domain. Re-running the seed replaces only those rows, so anything created through the UI is left untouched.
 
 Precious should run seeds locally after clone so she has the same baseline data as Arnav.
 

@@ -20,6 +20,7 @@ const AdmissionDocumentType = require("../models/AdmissionDocumentType");
 const AdmissionFeeMapping = require("../models/AdmissionFeeMapping");
 const ScholarshipRule = require("../models/ScholarshipRule");
 const AdmissionStatus = require("../models/AdmissionStatus");
+const { seedDemoAdmissionTransactions } = require("./demoAdmissionTransactions");
 
 const ROLE_SEEDS = [
   { code: "super_admin", name: "Super Admin", description: "Full platform access." },
@@ -401,6 +402,7 @@ async function seedAdmissionCycles() {
 
 async function seedIntakeCapacities() {
   const openCycle = await AdmissionCycle.findOne({ name: "Phase 1 - Regular" }).lean();
+  const closedCycle = await AdmissionCycle.findOne({ name: "AY 2024-25 Main" }).lean();
   if (!openCycle) {
     return;
   }
@@ -424,6 +426,21 @@ async function seedIntakeCapacities() {
       },
       { upsert: true }
     );
+
+    if (closedCycle) {
+      await IntakeCapacity.updateOne(
+        { cycle_id: closedCycle._id, program_id: program._id, category_id: null },
+        {
+          $set: {
+            cycle_id: closedCycle._id,
+            program_id: program._id,
+            category_id: null,
+            seats: program.intake_default || 60
+          }
+        },
+        { upsert: true }
+      );
+    }
 
     if (program.code === "BCA") {
       for (const [code, seats] of [
@@ -669,6 +686,7 @@ async function runSeeds() {
   await seedInstitution();
   await seedAdminUser();
   await seedUserMenuOverrides();
+  await seedDemoAdmissionTransactions();
 
   console.log(
     "Seeding completed: admin, roles, permissions, institution, academic years, departments, programs, admission masters."
