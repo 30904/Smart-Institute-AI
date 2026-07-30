@@ -39,7 +39,7 @@ function ProgramList({ rows, loading, departments, canCreate, canEdit, onCreate,
     { key: "duration", label: "Duration" },
     { key: "intake", label: "Intake" },
     { key: "status", label: "Status" },
-    { key: "actions", label: "Actions" }
+    { key: "actions", label: "Actions", align: "center" }
   ];
 
   const tableRows = rows.map((row) => ({

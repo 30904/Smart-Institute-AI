@@ -43,7 +43,7 @@ function ApplicationDocumentsPanel({ applicationId, documentTypes, canCreate, ca
     { key: "status", label: "Verification" },
     { key: "ocr", label: "OCR" },
     { key: "remarks", label: "Remarks" },
-    { key: "actions", label: "Actions" }
+    { key: "actions", label: "Actions", align: "center" }
   ];
 
   const rows = documents.map((document) => ({

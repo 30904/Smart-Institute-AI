@@ -92,7 +92,7 @@ function AdmissionTransactionsPage() {
     { key: "status", label: "Status" },
     { key: "merit", label: "Merit Score" },
     { key: "created", label: "Applied On" },
-    { key: "actions", label: "Actions" }
+    { key: "actions", label: "Actions", align: "center" }
   ];
 
   const tableRows = rows.map((row) => ({

@@ -53,7 +53,7 @@ function AcademicYearList({ rows, loading, canCreate, canEdit, onCreate, onUpdat
     { key: "period", label: "Period" },
     { key: "status", label: "Status" },
     { key: "active", label: "Active" },
-    { key: "actions", label: "Actions" }
+    { key: "actions", label: "Actions", align: "center" }
   ];
 
   const tableRows = rows.map((row) => ({

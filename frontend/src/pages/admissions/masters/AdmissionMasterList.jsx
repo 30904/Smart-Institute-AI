@@ -40,7 +40,7 @@ function AdmissionMasterList({ config, rows, optionSets, loading, canCreate, can
   const columns = useMemo(
     () => [
       ...config.columns.map((key) => ({ key, label: fieldsByName.get(key)?.label || key })),
-      { key: "actions", label: "Actions" }
+      { key: "actions", label: "Actions", align: "center" }
     ],
     [config, fieldsByName]
   );

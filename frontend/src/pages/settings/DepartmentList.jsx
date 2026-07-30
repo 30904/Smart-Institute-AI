@@ -35,7 +35,7 @@ function DepartmentList({ rows, loading, canCreate, canEdit, onCreate, onUpdate 
     { key: "code", label: "Code" },
     { key: "head", label: "Head User ID" },
     { key: "status", label: "Status" },
-    { key: "actions", label: "Actions" }
+    { key: "actions", label: "Actions", align: "center" }
   ];
 
   const tableRows = rows.map((row) => ({

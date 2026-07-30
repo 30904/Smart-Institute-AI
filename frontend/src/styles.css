@@ -509,7 +509,7 @@ body {
 .ui-actions-menu {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .ui-actions-trigger {
@@ -818,6 +818,16 @@ td {
   padding: 0.75rem;
   border-bottom: 1px solid #e2e8f0;
   text-align: left;
+}
+
+th.ui-cell-center,
+td.ui-cell-center {
+  text-align: center;
+}
+
+th.ui-cell-right,
+td.ui-cell-right {
+  text-align: right;
 }
 
 th {
