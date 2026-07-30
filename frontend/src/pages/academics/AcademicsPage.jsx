@@ -1,11 +1,7 @@
-import ModuleShell from "@/layout/ModuleShell";
+import AcademicsHub from "./AcademicsHub";
 
 function AcademicsPage() {
-  return (
-    <ModuleShell title="Academics" subtitle="Manage curriculum, schedules, and academic operations." activeTab="Dashboard">
-      <p>Academics module placeholder for academic routes.</p>
-    </ModuleShell>
-  );
+  return <AcademicsHub />;
 }
 
 export default AcademicsPage;

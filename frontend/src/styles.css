@@ -355,6 +355,47 @@ body {
   color: #6d28d9;
 }
 
+.ui-master-card-accent-amber {
+  border-top-color: #fbbf24;
+}
+
+.ui-master-card-accent-amber .ui-master-card-icon {
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.ui-master-card-accent-teal {
+  border-top-color: #2dd4bf;
+}
+
+.ui-master-card-accent-teal .ui-master-card-icon {
+  background: #f0fdfa;
+  color: #0f766e;
+}
+
+.ui-master-card-accent-rose {
+  border-top-color: #fb7185;
+}
+
+.ui-master-card-accent-rose .ui-master-card-icon {
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.ui-master-card-readonly-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  margin-top: 0.65rem;
+}
+
 .ui-master-card h4 {
   margin: 0.75rem 0 0.45rem;
 }
@@ -731,3 +772,163 @@ th {
     font-size: 1.4rem;
   }
 }
+
+/* ── WTI-style Faculty Masters ─────────────────────────────── */
+
+.fac-masters-banner {
+  background: linear-gradient(135deg, #1e3a8a 0%, #312e81 60%, #4c1d95 100%);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.fac-masters-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.fac-masters-banner-icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fac-masters-banner-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.72;
+  margin-bottom: 0.3rem;
+}
+
+.fac-masters-banner h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.fac-masters-banner-subtitle {
+  margin: 0;
+  opacity: 0.82;
+  font-size: 0.88rem;
+}
+
+.fac-masters-banner-count {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  min-width: 80px;
+}
+
+.fac-masters-banner-count strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fac-masters-banner-count span {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.fac-masters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.fac-master-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid #2dd4bf;
+  border-radius: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.fac-master-card:hover,
+.fac-master-card:focus-visible {
+  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
+  border-top-color: #0d9488;
+}
+
+.fac-master-card-icon {
+  width: 44px;
+  height: 44px;
+  background: #eff6ff;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: #2563eb;
+}
+
+.fac-master-card h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.fac-master-card-desc {
+  margin: 0 0 1.25rem;
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.fac-master-card-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #1d4ed8;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.fac-master-card-cta-muted {
+  color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .fac-masters-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fac-masters-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+

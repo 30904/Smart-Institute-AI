@@ -1,11 +1,7 @@
-import ModuleShell from "@/layout/ModuleShell";
+import LmsHub from "./LmsHub";
 
 function LmsPage() {
-  return (
-    <ModuleShell title="LMS" subtitle="Manage digital learning content and assessments." activeTab="Dashboard">
-      <p>LMS module placeholder for academic routes.</p>
-    </ModuleShell>
-  );
+  return <LmsHub />;
 }
 
 export default LmsPage;
