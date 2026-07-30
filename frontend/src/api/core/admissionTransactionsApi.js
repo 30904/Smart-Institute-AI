@@ -89,3 +89,18 @@ export async function fetchApplicationFeeConfirmations(applicationId) {
   const response = await client.get(`/admissions/fee-confirmations/${applicationId}`);
   return response.data;
 }
+
+export async function fetchAdmissionReports(filters = {}) {
+  const response = await client.get("/admissions/reports", { params: filters });
+  return response.data;
+}
+
+export async function exportAdmissionReportCsv(report, filters = {}) {
+  const response = await client.get("/admissions/reports/export", {
+    params: { report, ...filters },
+    responseType: "blob"
+  });
+  const disposition = response.headers["content-disposition"] || "";
+  const filename = disposition.match(/filename="?([^"]+)"?/)?.[1] || `admissions-${report}.csv`;
+  return { blob: response.data, filename };
+}
