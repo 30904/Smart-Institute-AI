@@ -7,6 +7,8 @@ const {
   verify: verifyDocument,
   reject: rejectDocument
 } = require("../controllers/admissionDocumentController");
+const { validate: validateEligibility } = require("../controllers/admissionEligibilityController");
+const { decide: decideApproval } = require("../controllers/admissionApprovalController");
 const requireAuth = require("../middleware/requireAuth");
 const requirePermission = require("../middleware/requirePermission");
 const { uploadAdmissionDocument } = require("../middleware/uploadAdmissionDocument");
@@ -16,6 +18,16 @@ const router = express.Router();
 router.use(requireAuth);
 
 router.get("/", requirePermission("admissions", "view"), list);
+router.post(
+  "/:applicationId/validate-eligibility",
+  requirePermission("admissions", "edit"),
+  validateEligibility
+);
+router.patch(
+  "/:applicationId/approval",
+  requirePermission("admissions", "approve"),
+  decideApproval
+);
 router.get("/:applicationId/documents", requirePermission("admissions", "view"), listDocuments);
 router.post(
   "/:applicationId/documents",

@@ -9,6 +9,8 @@ const departmentRoutes = require("./departmentRoutes");
 const programRoutes = require("./programRoutes");
 const admissionMasterRoutes = require("./admissionMasterRoutes");
 const admissionApplicationRoutes = require("./admissionApplicationRoutes");
+const admissionMeritRoutes = require("./admissionMeritRoutes");
+const admissionCounselingRoutes = require("./admissionCounselingRoutes");
 
 const router = express.Router();
 
@@ -21,5 +23,7 @@ router.use("/departments", departmentRoutes);
 router.use("/programs", programRoutes);
 router.use("/admissions/masters", admissionMasterRoutes);
 router.use("/admissions/applications", admissionApplicationRoutes);
+router.use("/admissions/merit-lists", admissionMeritRoutes);
+router.use("/admissions/counseling", admissionCounselingRoutes);
 
 module.exports = router;

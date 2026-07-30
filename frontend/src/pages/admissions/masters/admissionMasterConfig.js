@@ -2,6 +2,7 @@ const statusCodeOptions = [
   ["applied", "Applied"],
   ["docs_pending", "Docs Pending"],
   ["eligible", "Eligible"],
+  ["ineligible", "Ineligible"],
   ["merit_listed", "Merit Listed"],
   ["allotted", "Allotted"],
   ["approved", "Approved"],

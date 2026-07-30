@@ -73,6 +73,34 @@ const academicSchema = new mongoose.Schema(
   { _id: false }
 );
 
+const eligibilityResultSchema = new mongoose.Schema(
+  {
+    program_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Program",
+      required: true
+    },
+    criteria_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "EligibilityCriteria",
+      default: null
+    },
+    is_eligible: {
+      type: Boolean,
+      required: true
+    },
+    reasons: {
+      type: [String],
+      default: []
+    },
+    evaluated_at: {
+      type: Date,
+      required: true
+    }
+  },
+  { _id: false }
+);
+
 const admissionApplicationSchema = new mongoose.Schema(
   {
     personal: {
@@ -124,6 +152,14 @@ const admissionApplicationSchema = new mongoose.Schema(
     merit_score: {
       type: Number,
       min: 0,
+      default: null
+    },
+    eligibility_results: {
+      type: [eligibilityResultSchema],
+      default: []
+    },
+    eligibility_checked_at: {
+      type: Date,
       default: null
     }
   },

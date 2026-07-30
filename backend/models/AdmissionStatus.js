@@ -4,6 +4,7 @@ const ADMISSION_STATUS_CODES = [
   "applied",
   "docs_pending",
   "eligible",
+  "ineligible",
   "merit_listed",
   "allotted",
   "approved",
