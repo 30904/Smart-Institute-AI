@@ -10,6 +10,7 @@
 
 * {
   box-sizing: border-box;
+  border-radius: 0;
 }
 
 input,
@@ -35,7 +36,6 @@ body {
   width: min(420px, 100%);
   background: #ffffff;
   border: 1px solid #dbe3ef;
-  border-radius: 12px;
   padding: 1.25rem;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
@@ -89,7 +89,6 @@ body {
 .sidebar-toggle {
   border: 1px solid #cbd5e1;
   background: #f8fafc;
-  border-radius: 6px;
   height: 28px;
   width: 28px;
   cursor: pointer;
@@ -107,7 +106,6 @@ body {
   gap: 0.65rem;
   text-decoration: none;
   color: #334155;
-  border-radius: 8px;
   padding: 0.6rem;
   font-weight: 600;
 }
@@ -120,7 +118,6 @@ body {
 .nav-dot {
   width: 8px;
   height: 8px;
-  border-radius: 999px;
   background: currentColor;
 }
 
@@ -152,7 +149,6 @@ body {
 .topbar-search input {
   width: 100%;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
   padding: 0.55rem 0.8rem;
 }
 
@@ -160,7 +156,6 @@ body {
   margin: 1rem;
   background: linear-gradient(135deg, #1d4ed8, #4338ca);
   color: #ffffff;
-  border-radius: 12px;
   padding: 1.25rem 1.35rem;
   display: flex;
   justify-content: space-between;
@@ -187,7 +182,6 @@ body {
 .module-count {
   background: rgba(255, 255, 255, 0.14);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
   padding: 0.6rem 0.85rem;
   text-align: center;
 }
@@ -207,7 +201,6 @@ body {
   margin: 0 1rem 1rem;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
 }
 
 .app-shell {
@@ -239,7 +232,6 @@ body {
   border: 1px solid #cbd5e1;
   background: #ffffff;
   color: #334155;
-  border-radius: 999px;
   padding: 0.45rem 0.9rem;
   font-size: 0.88rem;
   font-weight: 600;
@@ -278,7 +270,6 @@ body {
 .ui-status-badge {
   display: inline-flex;
   align-items: center;
-  border-radius: 999px;
   padding: 0.2rem 0.55rem;
   font-size: 0.74rem;
   font-weight: 700;
@@ -319,7 +310,6 @@ body {
 .ui-master-card-link {
   border: 1px solid #dbe3ef;
   border-top: 3px solid #93c5fd;
-  border-radius: 10px;
   background: #ffffff;
   padding: 0.95rem;
 }
@@ -378,7 +368,6 @@ body {
 .ui-master-card-icon {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
   background: #eff6ff;
   display: inline-flex;
   align-items: center;
@@ -429,7 +418,6 @@ body {
 .ui-drawer-header button {
   border: 1px solid #cbd5e1;
   background: #f8fafc;
-  border-radius: 8px;
   padding: 0.38rem 0.7rem;
   cursor: pointer;
 }
@@ -455,7 +443,6 @@ body {
 .ui-form-grid select,
 .ui-form-grid textarea {
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
   padding: 0.55rem 0.7rem;
   font-size: 0.92rem;
 }
@@ -482,7 +469,6 @@ body {
   border: 1px solid #1d4ed8;
   background: #1d4ed8;
   color: #ffffff;
-  border-radius: 8px;
   padding: 0.45rem 0.8rem;
   cursor: pointer;
 }
@@ -491,7 +477,6 @@ body {
   border: 1px solid #cbd5e1;
   background: #ffffff;
   color: #334155;
-  border-radius: 8px;
   padding: 0.45rem 0.8rem;
   cursor: pointer;
 }
@@ -534,7 +519,6 @@ body {
 .admission-upload-bar input {
   min-width: 180px;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
   background: #ffffff;
   padding: 0.5rem 0.65rem;
 }
@@ -549,7 +533,6 @@ body {
 .admission-workflow-card {
   margin-top: 0.85rem;
   border: 1px solid #dbe3ef;
-  border-radius: 10px;
   background: #ffffff;
   padding: 1rem;
 }
@@ -597,7 +580,6 @@ body {
 .admission-kpi-card {
   border: 1px solid #dbe3ef;
   border-top: 3px solid #60a5fa;
-  border-radius: 10px;
   background: #ffffff;
   padding: 0.9rem;
 }
@@ -638,7 +620,6 @@ body {
   gap: 0.85rem;
   border: 1px solid #dbe3ef;
   border-top: 3px solid #60a5fa;
-  border-radius: 10px;
   background: #ffffff;
   padding: 1rem;
 }
@@ -650,7 +631,6 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 9px;
   background: #eff6ff;
   color: #1d4ed8;
   font-weight: 700;
@@ -702,7 +682,6 @@ body {
   margin-top: 1rem;
   overflow-x: auto;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
   background: #fff;
 }
 

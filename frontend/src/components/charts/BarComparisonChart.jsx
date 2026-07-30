@@ -15,7 +15,7 @@ function BarComparisonChart({
         <Tooltip />
         <Legend />
         {bars.map((bar) => (
-          <Bar key={bar.key} dataKey={bar.key} fill={bar.color} name={bar.name || bar.key} radius={[4, 4, 0, 0]} />
+          <Bar key={bar.key} dataKey={bar.key} fill={bar.color} name={bar.name || bar.key} />
         ))}
       </BarChart>
     </ResponsiveContainer>

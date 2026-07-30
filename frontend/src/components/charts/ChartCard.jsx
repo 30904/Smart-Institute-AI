@@ -6,7 +6,6 @@ function ChartCard({ title, subtitle, children, height = 320 }) {
       style={{
         background: "#fff",
         border: "1px solid #e2e8f0",
-        borderRadius: 10,
         padding: "1rem"
       }}
     >
