@@ -61,7 +61,8 @@ This document defines event/data contracts used across module boundaries so Arna
   "event": "fee.paid",
   "occurredAt": "2026-07-28T09:35:00.000Z",
   "data": {
-    "studentId": "string",
+    "applicationId": "string|null",
+    "studentId": "string|null",
     "paymentId": "string",
     "receiptNo": "string",
     "invoiceNo": "string",
@@ -77,6 +78,7 @@ This document defines event/data contracts used across module boundaries so Arna
 
 ### Rules
 - `paymentId` and `receiptNo` must be idempotent identifiers.
+- Admission-term payments before enrollment must provide `applicationId`; `studentId` is populated only after enrollment.
 - If `pendingAmount > 0`, dues still exist for hall-ticket gating.
 
 ---

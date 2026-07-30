@@ -101,6 +101,33 @@ const eligibilityResultSchema = new mongoose.Schema(
   { _id: false }
 );
 
+const guardianSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    relationship: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    phone: {
+      type: String,
+      default: "",
+      trim: true
+    },
+    email: {
+      type: String,
+      default: "",
+      trim: true,
+      lowercase: true
+    }
+  },
+  { _id: false }
+);
+
 const admissionApplicationSchema = new mongoose.Schema(
   {
     personal: {
@@ -110,6 +137,10 @@ const admissionApplicationSchema = new mongoose.Schema(
     academic: {
       type: academicSchema,
       required: true
+    },
+    guardians: {
+      type: [guardianSchema],
+      default: []
     },
     program_preferences: {
       type: [

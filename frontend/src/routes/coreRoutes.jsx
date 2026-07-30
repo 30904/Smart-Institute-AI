@@ -5,6 +5,9 @@ const DashboardPage = lazy(() => import("@/pages/dashboard/DashboardPage"));
 const AdmissionsPage = lazy(() => import("@/pages/admissions/AdmissionsPage"));
 const AdmissionsMastersPage = lazy(() => import("@/pages/admissions/AdmissionsMastersPage"));
 const AdmissionMasterPage = lazy(() => import("@/pages/admissions/masters/AdmissionMasterPage"));
+const AdmissionTransactionsPage = lazy(() => import("@/pages/admissions/transactions/AdmissionTransactionsPage"));
+const ApplicationDetailPage = lazy(() => import("@/pages/admissions/transactions/ApplicationDetailPage"));
+const CounselingPage = lazy(() => import("@/pages/admissions/transactions/CounselingPage"));
 const StudentsPage = lazy(() => import("@/pages/students/StudentsPage"));
 const FeesPage = lazy(() => import("@/pages/fees/FeesPage"));
 const UsersPage = lazy(() => import("@/pages/users/UsersPage"));
@@ -22,7 +25,9 @@ const coreRoutes = [
   { path: "/admissions/dashboard", element: AdmissionsPage, moduleName: "admissions", action: "view" },
   { path: "/admissions/masters", element: AdmissionsMastersPage, moduleName: "admissions", action: "view" },
   { path: "/admissions/masters/:resource", element: AdmissionMasterPage, moduleName: "admissions", action: "view" },
-  { path: "/admissions/transactions", element: AdmissionsPage, moduleName: "admissions", action: "view" },
+  { path: "/admissions/transactions", element: AdmissionTransactionsPage, moduleName: "admissions", action: "view" },
+  { path: "/admissions/transactions/counseling", element: CounselingPage, moduleName: "admissions", action: "view" },
+  { path: "/admissions/transactions/:applicationId", element: ApplicationDetailPage, moduleName: "admissions", action: "view" },
   { path: "/admissions/reports", element: AdmissionsPage, moduleName: "admissions", action: "view" },
   { path: "/students", element: StudentsPage, moduleName: "students", action: "view" },
   { path: "/fees", element: FeesPage, moduleName: "fees", action: "view" },
