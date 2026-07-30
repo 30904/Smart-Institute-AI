@@ -3,18 +3,19 @@ import { NavLink } from "react-router-dom";
 
 const tabs = ["Dashboard", "Masters", "Transactions", "Reports"];
 
-
 function getTabPath(basePath, tab) {
   return `${basePath}/${tab.toLowerCase()}`;
 }
 
-function ModuleShell({ title, subtitle, activeTab = "Dashboard", basePath, children }) {
-
-function ModuleShell({ title, activeTab = "Dashboard", onTabChange, children }) {
+function ModuleShell({ title, subtitle = "", activeTab = "Dashboard", basePath, onTabChange, children }) {
   return (
     <main className="app-shell">
-      <nav className="module-tabs" aria-label={`${title} tabs`}>
+      <header className="module-shell-header">
+        <h2>{title}</h2>
+        {subtitle ? <p>{subtitle}</p> : null}
+      </header>
 
+      <nav className="module-tabs" aria-label={`${title} tabs`}>
         {tabs.map((tab) =>
           basePath ? (
             <NavLink
@@ -25,23 +26,16 @@ function ModuleShell({ title, activeTab = "Dashboard", onTabChange, children }) 
               {tab}
             </NavLink>
           ) : (
-            <button key={tab} type="button" className={`module-tab ${tab === activeTab ? "active" : ""}`}>
+            <button
+              key={tab}
+              type="button"
+              className={`module-tab ${tab === activeTab ? "active" : ""}`}
+              onClick={() => onTabChange?.(tab)}
+            >
               {tab}
             </button>
           )
         )}
-
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            type="button"
-            className={`module-tab ${tab === activeTab ? "active" : ""}`}
-            onClick={() => onTabChange?.(tab)}
-          >
-            {tab}
-          </button>
-        ))}
-
       </nav>
 
       <section className="module-panel">{children}</section>
@@ -51,12 +45,10 @@ function ModuleShell({ title, activeTab = "Dashboard", onTabChange, children }) 
 
 ModuleShell.propTypes = {
   title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   activeTab: PropTypes.oneOf(tabs),
-
   basePath: PropTypes.string,
-
   onTabChange: PropTypes.func,
-
   children: PropTypes.node.isRequired
 };
 
