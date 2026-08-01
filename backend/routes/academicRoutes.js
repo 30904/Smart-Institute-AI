@@ -7,6 +7,12 @@ const {
 } = require("../controllers/timetableController");
 const academicMasterController = require("../controllers/academicMasterController");
 const facultyAttendanceController = require("../controllers/facultyAttendanceController");
+const facultyLeaveController = require("../controllers/facultyLeaveController");
+const facultyPerformanceController = require("../controllers/facultyPerformanceController");
+const facultyRegistrationController = require("../controllers/facultyRegistrationController");
+const workloadRuleController = require("../controllers/workloadRuleController");
+const subjectAllocationController = require("../controllers/subjectAllocationController");
+const facultyResearchController = require("../controllers/facultyResearchController");
 const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
@@ -56,5 +62,59 @@ router.get("/attendance/status", requireAuth, facultyAttendanceController.getSta
 router.post("/attendance/punch-in", requireAuth, facultyAttendanceController.punchIn);
 router.post("/attendance/punch-out", requireAuth, facultyAttendanceController.punchOut);
 router.get("/attendance/records", requireAuth, facultyAttendanceController.getRecords);
+
+// Leave Routes
+router.get("/leaves/conflicts", requireAuth, facultyLeaveController.checkConflicts);
+router.route("/leaves")
+  .get(requireAuth, facultyLeaveController.getLeaves)
+  .post(requireAuth, facultyLeaveController.applyLeave);
+router.put("/leaves/:id/status", requireAuth, facultyLeaveController.updateLeaveStatus);
+
+// Performance Routes
+router.get("/performance/stats", requireAuth, facultyPerformanceController.getPerformanceStats);
+router.route("/performance")
+  .get(requireAuth, facultyPerformanceController.getPerformanceRecords)
+  .post(requireAuth, facultyPerformanceController.addPerformanceRecord);
+
+// Faculty Registration Routes
+router.route("/faculty-registration")
+  .get(requireAuth, facultyRegistrationController.getAllFaculty)
+  .post(requireAuth, facultyRegistrationController.registerFaculty);
+router.route("/faculty-registration/:id")
+  .get(requireAuth, facultyRegistrationController.getFacultyById)
+  .put(requireAuth, facultyRegistrationController.updateFaculty)
+  .delete(requireAuth, facultyRegistrationController.deleteFaculty);
+
+// Workload Rules Routes
+router.route("/workload-rules")
+  .get(requireAuth, workloadRuleController.getAllWorkloadRules)
+  .post(requireAuth, workloadRuleController.createWorkloadRule);
+router.route("/workload-rules/:id")
+  .get(requireAuth, workloadRuleController.getWorkloadRuleById)
+  .put(requireAuth, workloadRuleController.updateWorkloadRule)
+  .delete(requireAuth, workloadRuleController.deleteWorkloadRule);
+
+// Subject Allocation Routes
+router.route("/subject-allocations")
+  .get(requireAuth, subjectAllocationController.getAllocations)
+  .post(requireAuth, subjectAllocationController.assignSubject);
+router.route("/subject-allocations/:id")
+  .delete(requireAuth, subjectAllocationController.removeAllocation);
+
+// Research — Publications Routes
+router.route("/publications")
+  .get(requireAuth, facultyResearchController.getPublications)
+  .post(requireAuth, facultyResearchController.addPublication);
+router.route("/publications/:id")
+  .put(requireAuth, facultyResearchController.updatePublication)
+  .delete(requireAuth, facultyResearchController.deletePublication);
+
+// Research — Training Routes
+router.route("/trainings")
+  .get(requireAuth, facultyResearchController.getTrainings)
+  .post(requireAuth, facultyResearchController.addTraining);
+router.route("/trainings/:id")
+  .put(requireAuth, facultyResearchController.updateTraining)
+  .delete(requireAuth, facultyResearchController.deleteTraining);
 
 module.exports = router;

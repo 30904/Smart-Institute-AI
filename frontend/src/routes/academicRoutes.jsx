@@ -14,6 +14,14 @@ const SubjectMaster = lazy(() => import("@/pages/faculty/masters/SubjectMaster")
 
 const FacultyPunchPage = lazy(() => import("@/pages/faculty/attendance/FacultyPunchPage"));
 const FacultyAttendanceReport = lazy(() => import("@/pages/faculty/attendance/FacultyAttendanceReport"));
+const FacultyLeavePage = lazy(() => import("@/pages/faculty/transactions/leave/FacultyLeavePage"));
+const FacultyPerformancePage = lazy(() => import("@/pages/faculty/transactions/performance/FacultyPerformancePage"));
+const FacultyRegistrationPage = lazy(() => import("@/pages/faculty/transactions/registration/FacultyRegistrationPage"));
+const FacultyDirectoryPage = lazy(() => import("@/pages/faculty/reports/directory/FacultyDirectoryPage"));
+const WorkloadRulesPage = lazy(() => import("@/pages/faculty/masters/WorkloadRulesPage"));
+const SubjectAllocationPage = lazy(() => import("@/pages/faculty/transactions/subject-allocation/SubjectAllocationPage"));
+const FacultyResearchPage = lazy(() => import("@/pages/faculty/transactions/research/FacultyResearchPage"));
+const FacultyProfilePage = lazy(() => import("@/pages/faculty/reports/FacultyProfilePage"));
 
 const academicRoutes = [
   { path: "/faculty", element: FacultyPage, moduleName: "faculty", action: "view" },
@@ -23,7 +31,15 @@ const academicRoutes = [
   { path: "/faculty/masters/subjects", element: SubjectMaster, moduleName: "faculty", action: "view" },
   { path: "/faculty/attendance/punch", element: FacultyPunchPage, moduleName: "faculty", action: "view" },
   { path: "/faculty/attendance/report", element: FacultyAttendanceReport, moduleName: "faculty", action: "view" },
+  { path: "/faculty/transactions/leave", element: FacultyLeavePage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/transactions/performance", element: FacultyPerformancePage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/transactions/registration", element: FacultyRegistrationPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/transactions/subject-allocation", element: SubjectAllocationPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/transactions/research", element: FacultyResearchPage, moduleName: "faculty", action: "view" },
   { path: "/faculty/transactions/timetable", element: TimetableAssignment, moduleName: "faculty", action: "view" },
+  { path: "/faculty/masters/workload-rules", element: WorkloadRulesPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/reports/directory", element: FacultyDirectoryPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/profile/:id", element: FacultyProfilePage, moduleName: "faculty", action: "view" },
   { path: "/academics", element: AcademicsPage, moduleName: "academics", action: "view" },
   { path: "/academics/transactions/timetable-generation", element: TimetableGeneration, moduleName: "academics", action: "view" },
   { path: "/lms", element: LmsPage, moduleName: "lms", action: "view" },
