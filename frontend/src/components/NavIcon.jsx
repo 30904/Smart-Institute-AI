@@ -115,6 +115,36 @@ const icons = {
     <IconShell>
       <path {...strokeProps} d="M14.5 6.5 9 12l5.5 5.5" />
     </IconShell>
+  ),
+  search: (
+    <IconShell>
+      <circle {...strokeProps} cx="11" cy="11" r="6.5" />
+      <path {...strokeProps} d="M16.2 16.2 20 20" />
+    </IconShell>
+  ),
+  chevronDown: (
+    <IconShell>
+      <path {...strokeProps} d="M7 9.5 12 14.5 17 9.5" />
+    </IconShell>
+  ),
+  moon: (
+    <IconShell>
+      <path {...strokeProps} d="M19 13.5A7.5 7.5 0 0 1 10.5 5 7.5 7.5 0 1 0 19 13.5Z" />
+    </IconShell>
+  ),
+  apps: (
+    <IconShell>
+      <rect {...strokeProps} x="4" y="4" width="6" height="6" />
+      <rect {...strokeProps} x="14" y="4" width="6" height="6" />
+      <rect {...strokeProps} x="4" y="14" width="6" height="6" />
+      <rect {...strokeProps} x="14" y="14" width="6" height="6" />
+    </IconShell>
+  ),
+  bell: (
+    <IconShell>
+      <path {...strokeProps} d="M6.5 16.5h11M8 16.5V10a4 4 0 1 1 8 0v6.5" />
+      <path {...strokeProps} d="M10.5 16.5a1.5 1.5 0 0 0 3 0" />
+    </IconShell>
   )
 };
 
