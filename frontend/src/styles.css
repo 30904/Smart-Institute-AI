@@ -58,7 +58,7 @@ body {
 }
 
 .erp-layout.is-collapsed {
-  grid-template-columns: 76px 1fr;
+  grid-template-columns: 88px 1fr;
 }
 
 .sidebar {
@@ -73,8 +73,8 @@ body {
 }
 
 .sidebar.collapsed {
-  padding-left: 0.55rem;
-  padding-right: 0.55rem;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
 }
 
 .sidebar-brand-row {
@@ -203,18 +203,27 @@ body {
 }
 
 .nav-link-icon {
-  width: 22px;
-  height: 22px;
+  --nav-icon-box: 24px;
+  --nav-icon-size: 22px;
+  width: var(--nav-icon-box);
+  height: var(--nav-icon-box);
+  min-width: var(--nav-icon-box);
+  min-height: var(--nav-icon-box);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 22px;
+  flex: 0 0 var(--nav-icon-box);
   color: inherit;
 }
 
 .nav-link-icon svg {
-  width: 20px;
-  height: 20px;
+  width: var(--nav-icon-size) !important;
+  height: var(--nav-icon-size) !important;
+  min-width: var(--nav-icon-size);
+  min-height: var(--nav-icon-size);
+  flex: 0 0 var(--nav-icon-size);
+  display: block;
+  transform: none;
 }
 
 .nav-link-label {
@@ -225,8 +234,24 @@ body {
 
 .sidebar.collapsed .nav-link {
   justify-content: center;
-  padding-left: 0.45rem;
-  padding-right: 0.45rem;
+  padding: 0.72rem 0.55rem;
+}
+
+.sidebar.collapsed .nav-link-icon {
+  width: var(--nav-icon-box);
+  height: var(--nav-icon-box);
+  min-width: var(--nav-icon-box);
+  min-height: var(--nav-icon-box);
+  flex: 0 0 var(--nav-icon-box);
+}
+
+.sidebar.collapsed .nav-link-icon svg {
+  width: var(--nav-icon-size) !important;
+  height: var(--nav-icon-size) !important;
+  min-width: var(--nav-icon-size);
+  min-height: var(--nav-icon-size);
+  flex: 0 0 var(--nav-icon-size);
+  transform: none;
 }
 
 .sidebar.collapsed .nav-link.active::before {
