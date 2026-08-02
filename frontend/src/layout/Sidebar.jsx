@@ -33,11 +33,11 @@ function Sidebar({ collapsed, onToggle }) {
         <button
           type="button"
           onClick={onToggle}
-          className="sidebar-toggle"
+          className={`sidebar-toggle${collapsed ? " is-collapsed" : ""}`}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           title={collapsed ? "Expand" : "Collapse"}
         >
-          {collapsed ? ">" : "<"}
+          <NavIcon name="panelToggle" />
         </button>
       </div>
 

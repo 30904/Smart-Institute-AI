@@ -110,6 +110,11 @@ const icons = {
       <rect x="10.25" y="9" width="3.5" height="10" fill="currentColor" />
       <rect x="16.5" y="5" width="3.5" height="14" fill="currentColor" />
     </svg>
+  ),
+  panelToggle: (
+    <IconShell>
+      <path {...strokeProps} d="M14.5 6.5 9 12l5.5 5.5" />
+    </IconShell>
   )
 };
 
