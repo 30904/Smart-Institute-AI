@@ -7,6 +7,9 @@ import "@fontsource/inter/700.css";
 import App from "./App.jsx";
 import "./styles.css";
 
+const storedTheme = localStorage.getItem("smart-institute-theme");
+document.documentElement.setAttribute("data-theme", storedTheme === "dark" ? "dark" : "light");
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
