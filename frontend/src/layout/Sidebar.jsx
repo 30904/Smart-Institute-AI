@@ -19,17 +19,17 @@ function Sidebar({ collapsed, onToggle }) {
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
       <div className="sidebar-brand-row">
-        <div className="sidebar-brand">
-          <span className="sidebar-brand-mark">
-            <NavIcon name="brand" />
-          </span>
-          {!collapsed ? (
+        {!collapsed ? (
+          <div className="sidebar-brand">
+            <span className="sidebar-brand-mark">
+              <NavIcon name="brand" />
+            </span>
             <div className="sidebar-brand-text">
               <strong>Celeris</strong>
               <span>ERP PLATFORM</span>
             </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
         <button
           type="button"
           onClick={onToggle}
