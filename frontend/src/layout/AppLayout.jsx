@@ -27,7 +27,7 @@ function AppLayout() {
   }, [location.pathname]);
 
   return (
-    <div className="erp-layout">
+    <div className={`erp-layout${collapsed ? " is-collapsed" : ""}`}>
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((prev) => !prev)} />
       <div className="erp-main">
         <TopBar />
