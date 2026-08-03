@@ -118,25 +118,13 @@ const icons = {
   ),
   home: (
     <IconShell>
-      <path
-        fill="currentColor"
-        stroke="none"
-        d="M12 3.15 3.45 10.2a1 1 0 0 0-.4.8v8.3c0 .97.78 1.75 1.75 1.75h4.1c.55 0 1-.45 1-1v-3.85c0-.69.56-1.25 1.25-1.25h1.7c.69 0 1.25.56 1.25 1.25V20c0 .55.45 1 1 1h4.1c.97 0 1.75-.78 1.75-1.75v-8.3a1 1 0 0 0-.4-.8L12 3.15Z"
-      />
+      <path {...strokeProps} d="M4 10.8 12 4l8 6.8" />
+      <path {...strokeProps} d="M6.5 9.8V20h4.2v-5.2h2.6V20H17.5V9.8" />
     </IconShell>
   ),
   back: (
     <IconShell>
-      <path
-        fill="currentColor"
-        stroke="none"
-        d="M14.2 6.35a1.1 1.1 0 0 1 0 1.56L10.1 12l4.1 4.09a1.1 1.1 0 1 1-1.56 1.56l-4.88-4.87a1.1 1.1 0 0 1 0-1.56l4.88-4.87a1.1 1.1 0 0 1 1.56 0Z"
-      />
-      <path
-        fill="currentColor"
-        stroke="none"
-        d="M9.2 10.9h7.5a1.1 1.1 0 0 1 0 2.2H9.2a1.1 1.1 0 0 1 0-2.2Z"
-      />
+      <path {...strokeProps} d="M14.5 6.5 9 12l5.5 5.5" />
     </IconShell>
   ),
   search: (

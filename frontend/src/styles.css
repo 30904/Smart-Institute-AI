@@ -812,49 +812,42 @@ body {
 }
 
 .module-subnav-icon-btn {
+  --nav-icon-box: 24px;
+  --nav-icon-size: 22px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.35rem;
-  height: 2.35rem;
-  border: 1px solid transparent;
-  background: #ecfdf5;
+  width: var(--nav-icon-box);
+  height: var(--nav-icon-box);
+  min-width: var(--nav-icon-box);
+  min-height: var(--nav-icon-box);
+  border: 0;
+  background: transparent;
   color: #0f766e;
   cursor: pointer;
   padding: 0;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
-.module-subnav-icon-btn.is-home {
-  background: linear-gradient(145deg, #0d9488, #0f766e);
-  color: #ffffff;
-  border-color: #0f766e;
-}
-
+.module-subnav-icon-btn.is-home,
 .module-subnav-icon-btn.is-back {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border-color: #bfdbfe;
+  background: transparent;
+  border: 0;
+  color: #0f766e;
 }
 
-.module-subnav-icon-btn:hover {
-  transform: translateY(-1px);
-}
-
-.module-subnav-icon-btn.is-home:hover {
-  background: linear-gradient(145deg, #14b8a6, #0d9488);
-  color: #ffffff;
-}
-
+.module-subnav-icon-btn:hover,
+.module-subnav-icon-btn.is-home:hover,
 .module-subnav-icon-btn.is-back:hover {
-  background: #dbeafe;
-  color: #1e40af;
-  border-color: #93c5fd;
+  background: transparent;
+  color: #0d9488;
+  transform: none;
 }
 
 .module-subnav-icon-btn svg {
-  width: 20px;
-  height: 20px;
+  width: var(--nav-icon-size) !important;
+  height: var(--nav-icon-size) !important;
+  min-width: var(--nav-icon-size);
+  min-height: var(--nav-icon-size);
 }
 
 .module-subnav-divider {
@@ -2130,16 +2123,19 @@ html[data-theme="dark"] .module-subnav-divider {
   background: #1f2937;
 }
 
-html[data-theme="dark"] .module-subnav-icon-btn.is-home {
-  background: linear-gradient(145deg, #0f766e, #115e59);
-  border-color: #0f766e;
-  color: #ecfdf5;
+html[data-theme="dark"] .module-subnav-icon-btn,
+html[data-theme="dark"] .module-subnav-icon-btn.is-home,
+html[data-theme="dark"] .module-subnav-icon-btn.is-back {
+  background: transparent;
+  border: 0;
+  color: #2dd4bf;
 }
 
-html[data-theme="dark"] .module-subnav-icon-btn.is-back {
-  background: #1e3a8a;
-  border-color: #1d4ed8;
-  color: #bfdbfe;
+html[data-theme="dark"] .module-subnav-icon-btn:hover,
+html[data-theme="dark"] .module-subnav-icon-btn.is-home:hover,
+html[data-theme="dark"] .module-subnav-icon-btn.is-back:hover {
+  background: transparent;
+  color: #5eead4;
 }
 
 html[data-theme="dark"] .topbar-search input,
