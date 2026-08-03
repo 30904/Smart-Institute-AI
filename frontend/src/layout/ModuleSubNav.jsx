@@ -60,7 +60,7 @@ function ModuleSubNav() {
       <div className="module-subnav-left">
         <button
           type="button"
-          className="module-subnav-icon-btn"
+          className="module-subnav-icon-btn is-home"
           aria-label="Go to home dashboard"
           title="Home"
           onClick={() => navigate("/dashboard")}
@@ -69,12 +69,12 @@ function ModuleSubNav() {
         </button>
         <button
           type="button"
-          className="module-subnav-icon-btn"
+          className="module-subnav-icon-btn is-back"
           aria-label="Go back"
           title="Back"
           onClick={() => navigate(-1)}
         >
-          <NavIcon name="panelToggle" />
+          <NavIcon name="back" />
         </button>
         <span className="module-subnav-divider" aria-hidden="true" />
         <nav className="module-subnav-tabs" aria-label={`${moduleLabel} sections`}>
