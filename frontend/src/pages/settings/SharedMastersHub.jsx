@@ -37,7 +37,6 @@ function SharedMastersHub() {
     <ModuleShell
       title="Shared Platform Masters"
       subtitle="Foundation masters consumed by Admissions, Students, Faculty, and Academics."
-      activeTab="Masters"
     >
       <MasterCardGrid items={items} />
     </ModuleShell>

@@ -25,6 +25,10 @@ const FacultyProfilePage = lazy(() => import("@/pages/faculty/reports/FacultyPro
 
 const academicRoutes = [
   { path: "/faculty", element: FacultyPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/dashboard", element: FacultyPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/masters", element: FacultyPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/transactions", element: FacultyPage, moduleName: "faculty", action: "view" },
+  { path: "/faculty/reports", element: FacultyPage, moduleName: "faculty", action: "view" },
   { path: "/faculty/masters/faculty-types", element: FacultyTypeMaster, moduleName: "faculty", action: "view" },
   { path: "/faculty/masters/designations", element: DesignationMaster, moduleName: "faculty", action: "view" },
   { path: "/faculty/masters/qualifications", element: QualificationMaster, moduleName: "faculty", action: "view" },
@@ -41,9 +45,21 @@ const academicRoutes = [
   { path: "/faculty/reports/directory", element: FacultyDirectoryPage, moduleName: "faculty", action: "view" },
   { path: "/faculty/profile/:id", element: FacultyProfilePage, moduleName: "faculty", action: "view" },
   { path: "/academics", element: AcademicsPage, moduleName: "academics", action: "view" },
+  { path: "/academics/dashboard", element: AcademicsPage, moduleName: "academics", action: "view" },
+  { path: "/academics/masters", element: AcademicsPage, moduleName: "academics", action: "view" },
+  { path: "/academics/transactions", element: AcademicsPage, moduleName: "academics", action: "view" },
+  { path: "/academics/reports", element: AcademicsPage, moduleName: "academics", action: "view" },
   { path: "/academics/transactions/timetable-generation", element: TimetableGeneration, moduleName: "academics", action: "view" },
   { path: "/lms", element: LmsPage, moduleName: "lms", action: "view" },
-  { path: "/exams", element: ExamsPage, moduleName: "exams", action: "view" }
+  { path: "/lms/dashboard", element: LmsPage, moduleName: "lms", action: "view" },
+  { path: "/lms/masters", element: LmsPage, moduleName: "lms", action: "view" },
+  { path: "/lms/transactions", element: LmsPage, moduleName: "lms", action: "view" },
+  { path: "/lms/reports", element: LmsPage, moduleName: "lms", action: "view" },
+  { path: "/exams", element: ExamsPage, moduleName: "exams", action: "view" },
+  { path: "/exams/dashboard", element: ExamsPage, moduleName: "exams", action: "view" },
+  { path: "/exams/masters", element: ExamsPage, moduleName: "exams", action: "view" },
+  { path: "/exams/transactions", element: ExamsPage, moduleName: "exams", action: "view" },
+  { path: "/exams/reports", element: ExamsPage, moduleName: "exams", action: "view" }
 ];
 
 export default academicRoutes;

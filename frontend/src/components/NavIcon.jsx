@@ -116,6 +116,12 @@ const icons = {
       <path {...strokeProps} d="M14.5 6.5 9 12l5.5 5.5" />
     </IconShell>
   ),
+  home: (
+    <IconShell>
+      <path {...strokeProps} d="M4 10.5 12 4l8 6.5" />
+      <path {...strokeProps} d="M7 10v9h4v-5h2v5h4v-9" />
+    </IconShell>
+  ),
   search: (
     <IconShell>
       <circle {...strokeProps} cx="11" cy="11" r="6.5" />

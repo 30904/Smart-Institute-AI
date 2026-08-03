@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
+import ModuleSubNav, { getModuleBaseFromPath } from "./ModuleSubNav";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 
@@ -26,13 +27,15 @@ function AppLayout() {
     return match || { title: "Dashboard", subtitle: "Smart Institute AI module workspace." };
   }, [location.pathname]);
 
-  const showModuleBanner = !location.pathname.startsWith("/admissions");
+  const moduleBase = getModuleBaseFromPath(location.pathname);
+  const showModuleBanner = !moduleBase;
 
   return (
     <div className={`erp-layout${collapsed ? " is-collapsed" : ""}`}>
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((prev) => !prev)} />
       <div className="erp-main">
         <TopBar />
+        <ModuleSubNav />
         {showModuleBanner ? (
           <section className="module-banner">
             <div>
@@ -46,7 +49,7 @@ function AppLayout() {
             </div>
           </section>
         ) : null}
-        <section className={`module-content${showModuleBanner ? "" : " is-flush"}`}>
+        <section className={`module-content${moduleBase ? " is-flush" : ""}`}>
           <Outlet />
         </section>
       </div>

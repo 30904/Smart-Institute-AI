@@ -95,8 +95,6 @@ function AdmissionMasterPage() {
     <ModuleShell
       title="Admissions"
       subtitle="Manage applications, enrollment, and admission workflows."
-      activeTab="Masters"
-      basePath="/admissions"
     >
       {error ? <p className="ui-error-text">{error}</p> : null}
       <AdmissionMasterList

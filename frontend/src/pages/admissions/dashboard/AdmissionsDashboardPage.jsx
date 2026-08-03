@@ -108,8 +108,6 @@ function AdmissionsDashboardPage() {
     <ModuleShell
       title="Admissions"
       subtitle="Manage applications, enrollment, and admission workflows."
-      activeTab="Dashboard"
-      basePath="/admissions"
     >
       <section className="adm-dash">
         <header className="adm-dash-hero">

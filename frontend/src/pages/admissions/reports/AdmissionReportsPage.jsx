@@ -135,7 +135,7 @@ function AdmissionReportsPage() {
   }));
 
   return (
-    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows." activeTab="Reports" basePath="/admissions">
+    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows.">
       <PageHeader title="Admission Reports" subtitle="Analyze applications, status, seats, merit, pending work, and conversion." />
       <form
         className="admission-filter-bar"

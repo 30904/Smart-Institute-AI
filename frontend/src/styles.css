@@ -792,36 +792,94 @@ body {
   color: #64748b;
 }
 
-.module-tabs {
-  margin-top: 1rem;
+.module-subnav {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 0.75rem;
+  padding: 0.45rem 1.1rem;
+  min-height: 2.6rem;
+}
+
+.module-subnav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.module-subnav-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 0;
+  background: transparent;
+  color: #0f766e;
+  cursor: pointer;
+  padding: 0;
+}
+
+.module-subnav-icon-btn:hover {
+  color: #0d9488;
+}
+
+.module-subnav-icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.module-subnav-divider {
+  width: 1px;
+  height: 1.35rem;
+  background: #e2e8f0;
+  flex-shrink: 0;
+}
+
+.module-subnav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
   overflow-x: auto;
 }
 
-.module-tab {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  color: #334155;
-  padding: 0.45rem 0.9rem;
-  font-size: 0.88rem;
-  font-weight: 600;
+.module-subnav-tab {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
   text-decoration: none;
-  cursor: pointer;
+  white-space: nowrap;
+  padding: 0.2rem 0;
+}
+
+.module-subnav-tab:hover {
+  color: #1e3a8a;
+}
+
+.module-subnav-tab.active {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.module-subnav-right {
+  flex-shrink: 0;
+}
+
+.module-subnav-crumb {
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 500;
   white-space: nowrap;
 }
 
-.module-tab.active {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-  color: #ffffff;
+.module-panel {
+  margin-top: 0.85rem;
 }
 
-.module-panel {
+.module-shell-header + .module-panel {
   margin-top: 1rem;
 }
 
@@ -2016,6 +2074,7 @@ html[data-theme="dark"] .sidebar-platform-link:hover {
 }
 
 html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .module-subnav,
 html[data-theme="dark"] .module-content,
 html[data-theme="dark"] .app-shell,
 html[data-theme="dark"] .ui-drawer,
@@ -2025,6 +2084,23 @@ html[data-theme="dark"] .login-card {
   background: #111827;
   border-color: #1f2937;
   color: #e2e8f0;
+}
+
+html[data-theme="dark"] .module-subnav-tab {
+  color: #94a3b8;
+}
+
+html[data-theme="dark"] .module-subnav-tab:hover,
+html[data-theme="dark"] .module-subnav-tab.active {
+  color: #93c5fd;
+}
+
+html[data-theme="dark"] .module-subnav-crumb {
+  color: #94a3b8;
+}
+
+html[data-theme="dark"] .module-subnav-divider {
+  background: #1f2937;
 }
 
 html[data-theme="dark"] .topbar-search input,

@@ -97,8 +97,6 @@ function AdmissionsMastersPage() {
     <ModuleShell
       title="Admissions"
       subtitle="Manage applications, enrollment, and admission workflows."
-      activeTab="Masters"
-      basePath="/admissions"
     >
       <MasterCardGrid items={admissionMasterCards} />
     </ModuleShell>

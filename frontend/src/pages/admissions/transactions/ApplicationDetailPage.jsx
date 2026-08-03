@@ -110,7 +110,7 @@ function ApplicationDetailPage() {
   }));
 
   return (
-    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows." activeTab="Transactions" basePath="/admissions">
+    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows.">
       <PageHeader
         title={application?.personal?.full_name || "Application Detail"}
         subtitle={application ? `Application ID: ${application.id}` : "Loading application..."}

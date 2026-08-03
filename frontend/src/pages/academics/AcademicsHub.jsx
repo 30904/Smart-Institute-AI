@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import ModuleShell from "@/layout/ModuleShell";
+import { getActiveModuleTab } from "@/layout/ModuleSubNav";
 
 /* ── Masters cards ─────────────────────────────────────────── */
 const MASTER_CARDS = [
@@ -317,10 +317,11 @@ function EmptyTab({ label }) {
 
 /* ── Main hub ──────────────────────────────────────────────── */
 function AcademicsHub() {
-  const [activeTab, setActiveTab] = useState("Masters");
+  const location = useLocation();
+  const activeTab = getActiveModuleTab(location.pathname);
 
   return (
-    <ModuleShell title="Academics" activeTab={activeTab} onTabChange={setActiveTab}>
+    <ModuleShell title="Academics">
       {activeTab === "Masters" && <CardGrid cards={MASTER_CARDS} />}
       {activeTab === "Dashboard" && <EmptyTab label="Dashboard" />}
       {activeTab === "Transactions" && <CardGrid cards={TRANSACTION_CARDS} />}

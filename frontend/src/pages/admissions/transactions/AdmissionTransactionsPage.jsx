@@ -147,7 +147,7 @@ function AdmissionTransactionsPage() {
   }
 
   return (
-    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows." activeTab="Transactions" basePath="/admissions">
+    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows.">
       <PageHeader
         title="Admission Applications"
         subtitle="Register applicants and track each admission workflow."

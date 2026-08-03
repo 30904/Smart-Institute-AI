@@ -93,7 +93,7 @@ function CounselingPage() {
   }));
 
   return (
-    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows." activeTab="Transactions" basePath="/admissions">
+    <ModuleShell title="Admissions" subtitle="Manage applications, enrollment, and admission workflows.">
       <PageHeader
         title="Merit & Counseling"
         subtitle="Generate ranked merit lists and allocate available seats."
