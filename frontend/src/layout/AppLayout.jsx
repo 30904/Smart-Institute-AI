@@ -26,23 +26,27 @@ function AppLayout() {
     return match || { title: "Dashboard", subtitle: "Smart Institute AI module workspace." };
   }, [location.pathname]);
 
+  const showModuleBanner = !location.pathname.startsWith("/admissions");
+
   return (
     <div className={`erp-layout${collapsed ? " is-collapsed" : ""}`}>
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((prev) => !prev)} />
       <div className="erp-main">
         <TopBar />
-        <section className="module-banner">
-          <div>
-            <p className="module-label">REFERENCE DATA</p>
-            <h1>{currentModule.title}</h1>
-            <p>{currentModule.subtitle}</p>
-          </div>
-          <div className="module-count">
-            <strong>7</strong>
-            <span>MODULES</span>
-          </div>
-        </section>
-        <section className="module-content">
+        {showModuleBanner ? (
+          <section className="module-banner">
+            <div>
+              <p className="module-label">REFERENCE DATA</p>
+              <h1>{currentModule.title}</h1>
+              <p>{currentModule.subtitle}</p>
+            </div>
+            <div className="module-count">
+              <strong>7</strong>
+              <span>MODULES</span>
+            </div>
+          </section>
+        ) : null}
+        <section className={`module-content${showModuleBanner ? "" : " is-flush"}`}>
           <Outlet />
         </section>
       </div>
